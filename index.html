@@ -155,10 +155,11 @@
 </nav>
 <div class="mt-auto px-6">
 <div class="bg-surface p-4 rounded-xl border border-outline-variant/30 shadow-sm">
-<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2">Koordinat</h3>
-<div class="font-data-mono text-data-mono text-primary bg-surface-container-lowest p-2 rounded border border-outline-variant/50">
-                     2°14'15.4"S 113°54'09.6"E
-                 </div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2">Tampilan Peta</h3>
+<div class="flex gap-2">
+<button id="btn-basemap-default" class="flex-1 bg-primary text-white py-2 rounded-lg font-label-caps text-[10px] border border-primary transition-colors">Default</button>
+<button id="btn-basemap-satellite" class="flex-1 bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container py-2 rounded-lg font-label-caps text-[10px] border border-outline-variant transition-colors">Satelit</button>
+</div>
 </div>
 </div>
 </aside>
@@ -167,16 +168,7 @@
 <!-- Map Background placeholder -->
 <div id="map" class="absolute inset-0 w-full h-full z-0 overflow-hidden">
 </div>
-<!-- Floating Agency Logos (Center-Top Area) -->
-<div class="hidden md:flex absolute top-6 right-margin-page z-10 bg-[rgba(255,255,255,0.7)] backdrop-blur-[16px] rounded-lg shadow-[0_-4px_20px_rgba(0,51,102,0.08)] border border-outline-variant/20 px-4 py-2 items-center gap-4">
-<div class="h-8 w-8 bg-transparent">
-<img alt="Agency Logo 1" class="w-full h-full object-contain" data-alt="A secondary official government emblem or seal, minimalist design, featuring a tree and river motif in dark blue and green. Designed to look formal and authoritative, suitable for a regional mapping agency. Placed on a transparent or bright white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeG7F1CgG4jWdKTBS2TaFnryqJwdtZIak3COXxQNTQGuFQB5bWfgqDq8B4bnBUfq7j8WDb-4mo4pFQ236nVNpSSYVIavOElBXM7fWl-k0-_hGswAE-Q-tkH23HCRrmY92ElbC8t0lQMGNbkYM8fWeJJH0WS3wswGxJ9j5PPtG-vsvFsoTmY77wg4Un3aCJN4mfDZWcXYoc3g3_-zUxh3YyjCMrwDw41bY0VfQoTf_4aX3MIQyu8IXrj_EsAnkfrlVrcErCIO5JwUE"/>
-</div>
-<div class="h-6 w-[1px] bg-outline-variant/50"></div>
-<div class="h-8 w-8 bg-transparent">
-<img alt="Agency Logo 2" class="w-full h-full object-contain" data-alt="A generic modern geometric logo resembling a shield or administrative symbol, styled in deep navy blue. It represents a data or statistics bureau within a local government context. The design is clean, sharp, and highly legible against a light map interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTzeHgV6kPRWvKz1oNGK0klbcEjAuWejICQ6HqeGLNCwUPEuHtJCnfzFsLthnLO1YLgYNkvD8IW-gUpWg6dzdZRlzHdQ4VXKce3FgrR0m7ftQNVT0c7NV_fyhzF9yytJXcnuLuIu-ezG7rGjS70USiksu2VPsGMj01gEAPFshMbzoQaxyw3S5yWBQXxlBk2HgVsQ-0qK1Ce-0rFjWSuRjxGXURZJZji972RY_eMDnKRlNvIFb3-y7A5ZjMqzNuWv6EVCi9OdTBH2c"/>
-</div>
-</div>
+<!-- Floating Agency Logos removed as per request -->
 <!-- GIS Controls (Zoom & Location) -->
 <div class="absolute top-6 right-6 z-10 flex flex-col gap-3">
 <div class="bg-surface-container-lowest/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,30,64,0.15)] border border-outline-variant/40 flex flex-col overflow-hidden p-1">
@@ -221,7 +213,12 @@
                     <span class="font-label-caps text-secondary bg-secondary-container px-3 py-1 rounded-full text-[10px] mb-3 inline-block">RT 01 / RW 02</span>
                     <h2 id="gallery-title" class="font-h1 text-[28px] text-primary">Zona Lomba C</h2>
                 </div>
-                <button class="bg-primary text-white font-label-caps px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">Lihat Laporan</button>
+                <div class="flex gap-2">
+                    <a id="btn-google-maps" href="https://maps.google.com/?q=-2.2359,113.9160" target="_blank" class="bg-surface-container-high text-primary font-label-caps px-4 py-2 rounded-lg hover:bg-surface-container-highest transition-colors flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[16px]">map</span> Rute
+                    </a>
+                    <button class="bg-primary text-white font-label-caps px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">Lihat Laporan</button>
+                </div>
             </div>
             <p class="text-on-surface-variant leading-relaxed mb-6">
                 Wilayah ini memiliki karakteristik permukiman padat dengan potensi wisata susur sungai. Program penataan difokuskan pada perbaikan sanitasi dan drainase ramah lingkungan.
@@ -339,10 +336,34 @@ document.addEventListener('DOMContentLoaded', function() {
         zoomControl: false // Disable default zoom control to use custom buttons
     }).setView([-2.2359, 113.9160], 13); // Koordinat Palangka Raya
 
-    // Add OpenStreetMap layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Add OpenStreetMap layer (Default)
+    var defaultLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+    // Add Satellite layer (Esri World Imagery)
+    var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+
+    const btnDefaultLayer = document.getElementById('btn-basemap-default');
+    const btnSatelliteLayer = document.getElementById('btn-basemap-satellite');
+
+    if(btnDefaultLayer && btnSatelliteLayer) {
+        btnDefaultLayer.addEventListener('click', () => {
+            if(map.hasLayer(satelliteLayer)) map.removeLayer(satelliteLayer);
+            if(!map.hasLayer(defaultLayer)) map.addLayer(defaultLayer);
+            btnDefaultLayer.className = "flex-1 bg-primary text-white py-2 rounded-lg font-label-caps text-[10px] border border-primary transition-colors";
+            btnSatelliteLayer.className = "flex-1 bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container py-2 rounded-lg font-label-caps text-[10px] border border-outline-variant transition-colors";
+        });
+        
+        btnSatelliteLayer.addEventListener('click', () => {
+            if(map.hasLayer(defaultLayer)) map.removeLayer(defaultLayer);
+            if(!map.hasLayer(satelliteLayer)) map.addLayer(satelliteLayer);
+            btnSatelliteLayer.className = "flex-1 bg-primary text-white py-2 rounded-lg font-label-caps text-[10px] border border-primary transition-colors";
+            btnDefaultLayer.className = "flex-1 bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container py-2 rounded-lg font-label-caps text-[10px] border border-outline-variant transition-colors";
+        });
+    }
 
     // Add Dummy Polygon
     var dummyPolygon = L.polygon([
