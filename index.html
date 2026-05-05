@@ -1,14 +1,16 @@
-<!-- Peta Utama - WebGIS Kampung Kereng -->
+<!-- Peta Utama - WebGIS Kampung Keren -->
 <!DOCTYPE html>
 
 <html lang="id"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>WebGIS Kampung Kereng - Peta Utama</title>
+<title>WebGIS Kampung Keren - Peta Utama</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Public+Sans:wght@500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -121,14 +123,14 @@
 </div>
 <div class="flex flex-col">
 <h1 class="font-h1 text-lg leading-tight text-primary dark:text-primary-fixed-dim font-bold tracking-tight uppercase">WebGIS</h1>
-<span class="text-[10px] font-label-caps text-on-surface-variant font-semibold tracking-[0.1em]">KAMPUNG KERENG BANGKIRAI</span>
+<span class="text-[10px] font-label-caps text-on-surface-variant font-semibold tracking-[0.1em]">KAMPUNG KEREN BANGKIRAI</span>
 </div>
 </div>
 <!-- Web Nav (Hidden on Mobile) -->
 <nav class="hidden md:flex items-center gap-6">
-<a class="text-primary font-bold border-b-2 border-primary font-label-caps text-label-caps pb-1" href="index.html">Peta Utama</a>
+<a class="text-primary font-bold border-b-2 border-primary font-label-caps text-label-caps pb-1" href="#">Peta Utama</a>
 <a class="text-on-surface-variant font-body-base hover:bg-surface-container-high/50 transition-colors px-2 py-1 rounded font-label-caps text-label-caps" href="#">Detail Wilayah</a>
-<a class="text-on-surface-variant font-body-base hover:bg-surface-container-high/50 transition-colors px-2 py-1 rounded font-label-caps text-label-caps" href="panduan.html">Panduan Pengguna</a>
+<a id="nav-panduan" class="text-on-surface-variant font-body-base hover:bg-surface-container-high/50 transition-colors px-2 py-1 rounded font-label-caps text-label-caps" href="#">Panduan Pengguna</a>
 </nav>
 <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high/50 transition-colors scale-95 active:opacity-80 transition-all duration-200 text-primary dark:text-primary-fixed-dim">
 <span class="material-symbols-outlined">help</span>
@@ -169,11 +171,7 @@
 <!-- Main Map Canvas -->
 <main class="flex-1 relative w-full h-full lg:pl-[360px] pt-control-bar-height">
 <!-- Map Background placeholder -->
-<div class="absolute inset-0 w-full h-full bg-surface-variant z-0 overflow-hidden">
-<img alt="Map Base" class="w-full h-full object-cover opacity-80" data-alt="A stylized, flat, top-down satellite or cartographic map view of an urban coastal or river area. The map uses a minimalist color palette primarily consisting of soft blues for water, light grays for land, and subtle green accents for vegetation. Clean lines mark administrative boundaries, reflecting a modern, technical WebGIS aesthetic suitable for government data visualization." data-location="Palangka Raya" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLcITvK5CH8FAIHFGUURCrA2z3GOu3IPhI1KpvkvJb3NwSoHGhS-SwXuYJxE_CB_2fPhhIgXQ20ZJ50ehnKDy2tEhkpRFzfBJ7L5LX0QmK6mCDTgzT3NUoZRec6GTCBY4v8UHLpYHcbZ1g_BrEuPkmieZ94_3IkihyrnGo7uMPbZe_j0zDnQXSc9zA_OEzT0CZwSGxnHdO-j73GYbk-KVswfpP716ORuVaD7tIyIdF-uoxGimT1Z2DBuSAn9m5lg4evBbrIqq2Qkw"/>
-<!-- SVG Overlay for colored boundaries (Competition Areas) -->
-<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="none" viewbox="0 0 1000 1000"><polygon fill="rgba(0, 109, 61, 0.15)" points="400,300 600,250 700,500 500,600 350,450" stroke="#006d3d" stroke-dasharray="4 2" stroke-width="1.5"></polygon>
-<polygon fill="rgba(0, 51, 102, 0.15)" points="750,550 900,500 950,700 800,800" stroke="#003366" stroke-dasharray="4 2" stroke-width="1.5"></polygon></svg>
+<div id="map" class="absolute inset-0 w-full h-full z-0 overflow-hidden">
 </div>
 <!-- Floating Search Bar -->
 <div class="absolute top-8 left-1/2 transform -translate-x-1/2 z-10 w-[92%] max-w-md lg:hidden">
@@ -205,15 +203,15 @@
 <!-- GIS Controls (Zoom & Location) -->
 <div class="absolute bottom-28 lg:bottom-12 right-8 z-10 flex flex-col gap-3">
 <div class="bg-surface-container-lowest/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,30,64,0.15)] border border-outline-variant/40 flex flex-col overflow-hidden p-1">
-<button class="w-12 h-12 flex items-center justify-center text-primary hover:bg-primary/5 active:bg-primary/10 transition-all rounded-xl">
+<button id="zoom-in-btn" class="w-12 h-12 flex items-center justify-center text-primary hover:bg-primary/5 active:bg-primary/10 transition-all rounded-xl z-20">
 <span class="material-symbols-outlined text-[24px]">add</span>
 </button>
-<div class="h-[1px] mx-2 bg-outline-variant/30"></div>
-<button class="w-12 h-12 flex items-center justify-center text-primary hover:bg-primary/5 active:bg-primary/10 transition-all rounded-xl">
+<div class="h-[1px] mx-2 bg-outline-variant/30 z-20"></div>
+<button id="zoom-out-btn" class="w-12 h-12 flex items-center justify-center text-primary hover:bg-primary/5 active:bg-primary/10 transition-all rounded-xl z-20">
 <span class="material-symbols-outlined text-[24px]">remove</span>
 </button>
 </div>
-<button class="w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-[0_8px_32px_rgba(0,30,64,0.25)] flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+<button id="my-location-btn" class="w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-[0_8px_32px_rgba(0,30,64,0.25)] flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-20">
 <span class="material-symbols-outlined text-[24px] fill">my_location</span>
 </button>
 </div>
@@ -239,7 +237,7 @@
 </main>
 <!-- BottomNavBar (Mobile Only) -->
 <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,51,102,0.08)] rounded-t-full pb-[max(env(safe-area-inset-bottom),8px)]">
-<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 Active: scale-90 duration-150 hover:bg-surface-container-highest transition-all" href="index.html">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 Active: scale-90 duration-150 hover:bg-surface-container-highest transition-all" href="#">
 <span class="material-symbols-outlined fill text-[24px]">map</span>
 <span class="font-label-caps text-label-caps mt-1">Peta Utama</span>
 </a>
@@ -247,9 +245,161 @@
 <span class="material-symbols-outlined text-[24px]">analytics</span>
 <span class="font-label-caps text-label-caps mt-1">Detail Wilayah</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-4 py-1 rounded-full" href="panduan.html">
+<a id="mobile-nav-panduan" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-4 py-1 rounded-full" href="#">
 <span class="material-symbols-outlined text-[24px]">info</span>
 <span class="font-label-caps text-label-caps mt-1">Informasi</span>
 </a>
 </nav>
+
+<!-- Onboarding Overlay Container -->
+<div id="onboarding-overlay" class="fixed inset-0 z-[60] flex items-center justify-center p-gutter bg-surface/80 backdrop-blur-sm transition-opacity duration-300">
+    <div class="w-full max-w-4xl bg-surface/90 backdrop-blur-xl rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row h-full max-h-[600px] border border-white/20">
+        <!-- Left Side: Visual/Context -->
+        <div class="w-full md:w-1/2 relative bg-primary-container overflow-hidden group">
+            <div class="absolute inset-0 opacity-40 mix-blend-overlay">
+                <img alt="GIS Interface" class="w-full h-full object-cover" data-alt="A professional high-tech GIS mapping interface displaying complex topological layers and administrative boundaries over a lush river delta. The scene is bathed in a professional deep blue lighting atmosphere with glowing neon green highlights indicating active data regions. The aesthetic is modern, institutional, and highly detailed, representing urban planning technology in a tropical environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8ZKvbyxTs-dtg87YmDymUrsLbaUndYdFnUhO4qffv1zck3MjCxnXUIzp0OqaJVL6l_lyZqO79uMpPIsFfA17RfHLWUfi_qLfH7hCszk_Y-lpaAp3XN0iJsjWnEAoMygGsEbWc9F7DeUJyzbrKVylMOpR-NgBYR6AkdRihaahf2hfcZoB-ztraEKGjflaDIxLDg_VcMa14Ofeoml59Eq1G9QMkvPn73JgDsnLXl4vxP1qaeF2P9HOSXRGjeV4AXnFm45lZe5QxTxg"/>
+            </div>
+            <!-- Agency Logo Contextual Float -->
+            <div class="absolute top-margin-page left-margin-page bg-white/70 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg border border-white/30 flex items-center gap-3">
+                <img alt="Crest Mini" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuDT1uWOTQ4Mne_KCaBuppYk6TXrwa_APmkumwcEXGeR7rnTGHiS_RfKY3s4ahaqU5gHv0qNyeknCNzp2J6XHpH0sy_oG0uYPAbYwtByj7z59CqvM8R6PuS0D4dV7yOTwUhW6_AkcMCu--GgMSLZRttm2Xr-uE5HirccsvYeO0heFrse_KhSh4eyU1oEIv4NupU2s_lJ1rwxvf70GDFdvShJitRAmsZ8VjMml0KFCpPWnZQvBWESxO_UQsSI0g-vauo6I0DZyWDRI"/>
+                <div class="flex flex-col">
+                    <span class="font-label-caps text-[10px] text-on-surface-variant leading-none">PEMERINTAH KOTA</span>
+                    <span class="font-h2 text-[12px] text-primary leading-tight font-bold">PALANGKA RAYA</span>
+                </div>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="p-8 text-center">
+                    <div class="mb-6 inline-flex p-4 rounded-full bg-secondary-container text-on-secondary-container shadow-xl">
+                        <span class="material-symbols-outlined text-[48px]">explore</span>
+                    </div>
+                    <h2 class="font-h1 text-white text-[32px] mb-2">Selamat Datang</h2>
+                    <p class="font-body-base text-primary-fixed-dim px-6">Mari mengenal fitur utama sistem informasi geografis Kampung Keren.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Right Side: Interaction/Steps -->
+        <div class="w-full md:w-1/2 p-margin-page flex flex-col h-full bg-surface">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-label-caps text-primary bg-primary-fixed px-3 py-1 rounded-full">Langkah 1 dari 4</span>
+                <button id="btn-skip-onboarding" class="text-on-surface-variant hover:text-primary font-label-caps tracking-widest text-[11px] uppercase">Lewati</button>
+            </div>
+            <div class="flex-grow space-y-8">
+                <!-- Steps Content Wrapper -->
+                <div class="animate-in fade-in duration-500">
+                    <div class="flex gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary text-[32px]">pan_tool_alt</span>
+                        </div>
+                        <div>
+                            <h3 class="font-h1 text-primary mb-2">Navigasi Peta</h3>
+                            <p class="text-on-surface-variant text-body-base leading-relaxed">
+                                Gunakan satu jari (sentuh) atau klik-tahan (mouse) untuk menggeser peta. Gunakan dua jari atau roda mouse untuk memperbesar dan memperkecil tampilan wilayah.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Mini Bento Tutorial Grids -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col items-center gap-2">
+                            <span class="material-symbols-outlined text-primary" data-weight="fill">ads_click</span>
+                            <span class="font-label-caps text-[10px] text-center">Klik &amp; Geser</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col items-center gap-2">
+                            <span class="material-symbols-outlined text-primary" data-weight="fill">zoom_in</span>
+                            <span class="font-label-caps text-[10px] text-center">Besarkan Skala</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Control Bar -->
+            <div class="mt-8 flex items-center justify-between pt-6 border-t border-outline-variant/30">
+                <div class="flex gap-1.5">
+                    <div class="w-8 h-1.5 rounded-full bg-primary-container"></div>
+                    <div class="w-2 h-1.5 rounded-full bg-outline-variant"></div>
+                    <div class="w-2 h-1.5 rounded-full bg-outline-variant"></div>
+                    <div class="w-2 h-1.5 rounded-full bg-outline-variant"></div>
+                </div>
+                <button id="btn-next-onboarding" class="bg-primary-container text-on-primary-fixed-variant px-8 py-3 rounded-xl font-h2 text-body-base hover:shadow-lg hover:shadow-primary/20 active:scale-95 transition-all flex items-center gap-2 text-white">
+                    Selanjutnya
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Leaflet Map
+    var map = L.map('map', {
+        zoomControl: false // Disable default zoom control to use custom buttons
+    }).setView([-2.2359, 113.9160], 13); // Koordinat Palangka Raya
+
+    // Add OpenStreetMap layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Map interaction variables
+    const zoomInBtn = document.getElementById('zoom-in-btn');
+    const zoomOutBtn = document.getElementById('zoom-out-btn');
+    const myLocationBtn = document.getElementById('my-location-btn');
+
+    if(zoomInBtn) {
+        zoomInBtn.addEventListener('click', () => {
+            map.zoomIn();
+        });
+    }
+    
+    if(zoomOutBtn) {
+        zoomOutBtn.addEventListener('click', () => {
+            map.zoomOut();
+        });
+    }
+
+    if(myLocationBtn) {
+        myLocationBtn.addEventListener('click', () => {
+            map.setView([-2.2359, 113.9160], 13);
+        });
+    }
+
+    // Onboarding logic
+    const onboardingOverlay = document.getElementById('onboarding-overlay');
+    const btnSkip = document.getElementById('btn-skip-onboarding');
+    const btnNext = document.getElementById('btn-next-onboarding');
+    const btnNavPanduan = document.getElementById('nav-panduan');
+    const btnMobilePanduan = document.getElementById('mobile-nav-panduan');
+
+    function closeOnboarding() {
+        onboardingOverlay.classList.add('opacity-0');
+        setTimeout(() => {
+            onboardingOverlay.classList.add('hidden');
+            onboardingOverlay.classList.remove('flex');
+        }, 300);
+    }
+
+    function openOnboarding() {
+        onboardingOverlay.classList.remove('hidden');
+        onboardingOverlay.classList.add('flex');
+        // Slight delay to allow display to apply before opacity transition
+        setTimeout(() => {
+            onboardingOverlay.classList.remove('opacity-0');
+        }, 10);
+    }
+
+    if(btnSkip) btnSkip.addEventListener('click', closeOnboarding);
+    if(btnNext) btnNext.addEventListener('click', closeOnboarding);
+    if(btnNavPanduan) {
+        btnNavPanduan.addEventListener('click', function(e) {
+            e.preventDefault();
+            openOnboarding();
+        });
+    }
+    if(btnMobilePanduan) {
+        btnMobilePanduan.addEventListener('click', function(e) {
+            e.preventDefault();
+            openOnboarding();
+        });
+    }
+});
+</script>
 </body></html>

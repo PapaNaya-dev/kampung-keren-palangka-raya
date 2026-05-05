@@ -1,9 +1,9 @@
-# WebGIS Kampung Kereng
+# WebGIS Kampung Keren
 
-## DOKUMEN PERSYARATAN PRODUK WEBGIS KAMPUNG KERENG
+## DOKUMEN PERSYARATAN PRODUK WEBGIS KAMPUNG KEREN
 
 ### DESKRIPSI PRODUK
-WebGIS ini merupakan platform pemetaan interaktif untuk Lomba Penataan Wilayah Kampung Kereng. Pemerintah Kota Palangka Raya menyelenggarakan kegiatan ini. Anda bisa mengakses situs ini secara bebas. Platform ini menampilkan batas wilayah peserta lomba dan informasi pendukung secara transparan.
+WebGIS ini merupakan platform pemetaan interaktif untuk Lomba Penataan Wilayah Kampung Keren. Pemerintah Kota Palangka Raya menyelenggarakan kegiatan ini. Anda bisa mengakses situs ini secara bebas. Platform ini menampilkan batas wilayah peserta lomba dan informasi pendukung secara transparan.
 
 ### TUJUAN
 1. Menyediakan platform visual penataan wilayah untuk publik.
