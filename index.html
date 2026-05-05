@@ -121,7 +121,7 @@
 </button>
 
 <!-- NavigationDrawer (Fixed Left Panel for Web) -->
-<aside id="sidebar" class="fixed left-0 top-0 h-full w-full sm:w-panel flex flex-col py-margin-page gap-gutter bg-surface-container/95 backdrop-blur-xl shadow-2xl border-r border-outline-variant/20 z-40 transition-transform duration-300 translate-x-0 pt-24">
+<aside id="sidebar" class="fixed left-0 top-0 h-full w-full sm:w-[360px] flex flex-col py-margin-page gap-gutter bg-surface-container/95 backdrop-blur-xl shadow-2xl border-r border-outline-variant/20 z-40 transition-transform duration-300 translate-x-0 pt-24">
 <div class="px-6 pb-2">
 <!-- Search Bar inside Sidebar -->
 <div class="bg-surface-container-lowest/90 rounded-full shadow-sm border border-outline-variant/30 flex items-center px-4 py-2 mb-6 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
@@ -344,6 +344,19 @@ document.addEventListener('DOMContentLoaded', function() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    // Add Dummy Polygon
+    var dummyPolygon = L.polygon([
+        [-2.230, 113.910],
+        [-2.230, 113.922],
+        [-2.242, 113.922],
+        [-2.242, 113.910]
+    ], {
+        color: '#006d3d',
+        weight: 2,
+        fillColor: '#97f3b5',
+        fillOpacity: 0.5
+    }).addTo(map);
+
     // Map interaction variables
     const zoomInBtn = document.getElementById('zoom-in-btn');
     const zoomOutBtn = document.getElementById('zoom-out-btn');
@@ -464,10 +477,12 @@ document.addEventListener('DOMContentLoaded', function() {
         btnCloseGallery.addEventListener('click', closeGallery);
     }
     
-    // Untuk testing: bisa panggil openGallery() saat polygon diklik nanti.
-    // map.on('click', function() {
-    //    openGallery();
-    // });
+    // Bind polygon click to open gallery
+    dummyPolygon.on('click', function() {
+        // Anda bisa mengupdate konten HTML di dalam modal di sini
+        document.getElementById('gallery-title').innerText = "Contoh Area Poligon";
+        openGallery();
+    });
 });
 </script>
 </body></html>
