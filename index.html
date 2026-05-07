@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -208,30 +209,47 @@
         </div>
         <!-- Detail Info -->
         <div class="p-8 flex-1 overflow-y-auto">
-            <div class="flex items-start justify-between mb-6">
+            <div class="flex flex-col md:flex-row md:items-start justify-between mb-6 gap-4">
                 <div>
-                    <span class="font-label-caps text-secondary bg-secondary-container px-3 py-1 rounded-full text-[10px] mb-3 inline-block">RT 01 / RW 02</span>
-                    <h2 id="gallery-title" class="font-h1 text-[28px] text-primary">Zona Lomba C</h2>
+                    <div id="gallery-badges" class="flex flex-wrap gap-2 mb-3">
+                        <!-- Badges will be inserted here -->
+                    </div>
+                    <h2 id="gallery-title" class="font-h1 text-[24px] md:text-[28px] text-primary leading-tight">Nama Kawasan</h2>
                 </div>
-                <div class="flex gap-2">
-                    <a id="btn-google-maps" href="https://maps.google.com/?q=-2.2359,113.9160" target="_blank" class="bg-surface-container-high text-primary font-label-caps px-4 py-2 rounded-lg hover:bg-surface-container-highest transition-colors flex items-center gap-1">
-                        <span class="material-symbols-outlined text-[16px]">map</span> Rute
-                    </a>
+                <div class="flex gap-2 shrink-0">
                     <button class="bg-primary text-white font-label-caps px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">Lihat Laporan</button>
                 </div>
             </div>
-            <p class="text-on-surface-variant leading-relaxed mb-6">
-                Wilayah ini memiliki karakteristik permukiman padat dengan potensi wisata susur sungai. Program penataan difokuskan pada perbaikan sanitasi dan drainase ramah lingkungan.
-            </p>
-            <div class="grid grid-cols-2 gap-4">
+
+            <!-- Call to Action / Tantangan -->
+            <div class="bg-surface-container p-4 rounded-xl border border-primary/20 mb-6 border-l-4 border-l-primary">
+                <h3 class="font-label-caps text-primary mb-2 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[16px]">campaign</span> TANTANGAN & POTENSI
+                </h3>
+                <p id="gallery-cta" class="text-on-surface-variant leading-relaxed text-[13px] md:text-[14px] italic">
+                    Deskripsi tantangan...
+                </p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
                     <span class="font-label-caps text-outline text-[10px]">LUAS AREA</span>
-                    <p class="font-data-mono text-primary text-[14px] mt-1 font-bold">14.2 Hektar</p>
+                    <p id="gallery-luas" class="font-data-mono text-primary text-[14px] mt-1 font-bold">-</p>
                 </div>
                 <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
-                    <span class="font-label-caps text-outline text-[10px]">POPULASI</span>
-                    <p class="font-data-mono text-primary text-[14px] mt-1 font-bold">320 Jiwa</p>
+                    <span class="font-label-caps text-outline text-[10px]">LOKASI (RT/RW)</span>
+                    <p id="gallery-lokasi" class="font-data-mono text-primary text-[12px] mt-1 font-bold break-words whitespace-pre-wrap leading-tight">-</p>
                 </div>
+            </div>
+
+            <!-- Radar Chart -->
+            <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20 flex flex-col items-center">
+                 <h3 class="font-label-caps text-outline text-[10px] w-full text-left mb-2">PROFIL KEKUMUHAN KAWASAN</h3>
+                 <div class="relative w-full aspect-square max-w-[300px]">
+                     <canvas id="kondisiChart"></canvas>
+                 </div>
+                 <p class="text-[10px] text-on-surface-variant/70 text-center mt-2 w-full">*Semakin menyentuh tepi luar (100%), semakin buruk kondisi indikator tersebut.</p>
             </div>
         </div>
     </div>
@@ -365,18 +383,168 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add Dummy Polygon
-    var dummyPolygon = L.polygon([
-        [-2.230, 113.910],
-        [-2.230, 113.922],
-        [-2.242, 113.922],
-        [-2.242, 113.910]
-    ], {
-        color: '#006d3d',
-        weight: 2,
-        fillColor: '#97f3b5',
-        fillOpacity: 0.5
-    }).addTo(map);
+    // Chart.js instance tracking
+    let currentChart = null;
+
+    function renderRadarChart(data) {
+        const ctx = document.getElementById('kondisiChart').getContext('2d');
+        
+        if (currentChart) {
+            currentChart.destroy();
+        }
+
+        currentChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Bangunan', 'Jalan', 'Air Minum', 'Drainase', 'Air Limbah', 'Persampahan', 'Kebakaran'],
+                datasets: [{
+                    label: 'Tingkat Kekumuhan (%)',
+                    data: [data.bgn, data.jln, data.air, data.drn, data.lmb, data.smp, data.keb],
+                    backgroundColor: 'rgba(186, 26, 26, 0.2)',
+                    borderColor: 'rgba(186, 26, 26, 1)',
+                    pointBackgroundColor: 'rgba(186, 26, 26, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(186, 26, 26, 1)'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(115, 119, 128, 0.2)' },
+                        grid: { color: 'rgba(115, 119, 128, 0.2)' },
+                        pointLabels: {
+                            color: '#43474f',
+                            font: { family: 'Inter', size: 10 }
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: '#737780',
+                            stepSize: 25,
+                            max: 100,
+                            min: 0
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.raw + '%';
+                            }
+                        }
+                    }
+                },
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    // Load GeoJSON data
+    let geojsonLayer;
+    fetch('data/kawasan.geojson')
+        .then(response => response.json())
+        .then(data => {
+            geojsonLayer = L.geoJSON(data, {
+                style: function(feature) {
+                    let fillColor = '#97f3b5';
+                    let color = '#006d3d';
+                    
+                    if (feature.properties.Kecamatan === 'PAHANDUT') {
+                        fillColor = '#d5e3ff';
+                        color = '#001e40';
+                    } else if (feature.properties.Kecamatan === 'JEKAN RAYA') {
+                        fillColor = '#ffdad6';
+                        color = '#ba1a1a';
+                    }
+                    
+                    return {
+                        color: color,
+                        weight: 2,
+                        fillColor: fillColor,
+                        fillOpacity: 0.6,
+                        dashArray: '3'
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    layer.on({
+                        mouseover: function(e) {
+                            var l = e.target;
+                            l.setStyle({ weight: 4, fillOpacity: 0.8 });
+                            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                                l.bringToFront();
+                            }
+                        },
+                        mouseout: function(e) {
+                            geojsonLayer.resetStyle(e.target);
+                        },
+                        click: function(e) {
+                            const p = feature.properties;
+                            
+                            // Headers
+                            const kel = p.Kelurahan || '';
+                            const title = p.Kawasan + (kel ? ` - ${kel}` : '');
+                            document.getElementById('gallery-title').innerText = title;
+                            
+                            // Stats
+                            document.getElementById('gallery-luas').innerText = (p.Luas_Ha || '-') + ' Hektar';
+                            document.getElementById('gallery-lokasi').innerText = p.Lokasi || 'Data belum tersedia';
+                            
+                            // CTA
+                            let ctaText = p.Call_to_Ac;
+                            if (!ctaText || ctaText.trim() === '') {
+                                ctaText = p.Potensi_1 || 'Data potensi dan tantangan belum tersedia untuk kawasan ini.';
+                            }
+                            document.getElementById('gallery-cta').innerText = ctaText;
+                            
+                            // Parse Condition Data
+                            const parseCond = val => {
+                                if(!val) return 0;
+                                return parseFloat(String(val).replace('%', '').replace(',', '.')) || 0;
+                            };
+                            const chartData = {
+                                bgn: parseCond(p.Kondisi_Ba),
+                                jln: parseCond(p.Kondisi_Ja),
+                                air: parseCond(p.Kondisi_ai),
+                                drn: parseCond(p.Kondisi_Dr),
+                                lmb: parseCond(p.Kondisi__1),
+                                smp: parseCond(p.Kondisi_Pe),
+                                keb: parseCond(p.Kondisi_Pr)
+                            };
+                            
+                            renderRadarChart(chartData);
+                            
+                            // Badges
+                            const badgesContainer = document.getElementById('gallery-badges');
+                            badgesContainer.innerHTML = '';
+                            
+                            if (chartData.keb >= 100) {
+                                badgesContainer.innerHTML += `<span class="bg-[#ba1a1a] text-white px-3 py-1 rounded-full text-[10px] font-label-caps flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">local_fire_department</span> Darurat Kebakaran (100%)</span>`;
+                            }
+                            if (chartData.drn > 50 || chartData.lmb > 50 || chartData.smp > 50) {
+                                badgesContainer.innerHTML += `<span class="bg-[#e65100] text-white px-3 py-1 rounded-full text-[10px] font-label-caps flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">warning</span> Rawan Sanitasi (>50%)</span>`;
+                            }
+                            
+                            const lowerCta = String(p.Potensi_1 || '').toLowerCase() + String(p.Call_to_Ac || '').toLowerCase();
+                            if (lowerCta.includes('wisata') || lowerCta.includes('ekowisata')) {
+                                badgesContainer.innerHTML += `<span class="bg-[#006d3d] text-white px-3 py-1 rounded-full text-[10px] font-label-caps flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">park</span> Potensi Ekowisata</span>`;
+                            }
+                            
+                            if (badgesContainer.innerHTML === '') {
+                                badgesContainer.innerHTML = `<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-label-caps shadow-sm">Info Terbatas</span>`;
+                            }
+                            
+                            openGallery();
+                        }
+                    });
+                }
+            }).addTo(map);
+            
+            // Auto zoom to loaded data
+            map.fitBounds(geojsonLayer.getBounds(), { padding: [50, 50] });
+        })
+        .catch(err => console.error("Error loading GeoJSON: ", err));
 
     // Map interaction variables
     const zoomInBtn = document.getElementById('zoom-in-btn');
@@ -498,12 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnCloseGallery.addEventListener('click', closeGallery);
     }
     
-    // Bind polygon click to open gallery
-    dummyPolygon.on('click', function() {
-        // Anda bisa mengupdate konten HTML di dalam modal di sini
-        document.getElementById('gallery-title').innerText = "Contoh Area Poligon";
-        openGallery();
-    });
+    // Polygon click logic is now handled inside the onEachFeature of geojsonLayer.
 });
 </script>
 </body></html>
