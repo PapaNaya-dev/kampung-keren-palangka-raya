@@ -216,7 +216,7 @@
         </button>
         <!-- Image Slider -->
         <div class="relative w-full h-64 bg-surface-container-high overflow-hidden group">
-            <img src="https://images.unsplash.com/photo-1546422904-90eab23c3d7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 1" class="w-full h-full object-cover">
+            <img id="gallery-image" src="https://images.unsplash.com/photo-1546422904-90eab23c3d7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 1" class="w-full h-full object-cover">
             <!-- Navigation -->
             <button class="absolute top-1/2 -translate-y-1/2 left-4 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <span class="material-symbols-outlined">chevron_left</span>
@@ -641,6 +641,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ctaText = p.Potensi_1 || 'Data potensi dan tantangan belum tersedia untuk kawasan ini.';
                             }
                             document.getElementById('gallery-cta').innerText = ctaText;
+
+                            // Dynamic Photo Logic
+                            const imgEl = document.getElementById('gallery-image');
+                            if (imgEl) {
+                                if (p.Foto_1) {
+                                    imgEl.src = p.Foto_1;
+                                } else {
+                                    imgEl.src = "https://images.unsplash.com/photo-1546422904-90eab23c3d7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"; // Fallback placeholder
+                                }
+                            }
                             
                             // Parse Condition Data
                             const parseCond = val => {
