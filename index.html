@@ -479,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let banjirLayer = L.layerGroup();
 
     // Fasilitas Umum Setup
-    fetch('data/fasum.geojson')
+    fetch('data/fasum.geojson?v=' + new Date().getTime())
         .then(res => res.json())
         .then(data => {
             const getFasumIcon = (kat, nama) => {
@@ -518,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     // Sebaran Persampahan Setup
-    fetch('data/persampahan.geojson')
+    fetch('data/persampahan.geojson?v=' + new Date().getTime())
         .then(res => res.json())
         .then(data => {
             const getSampahIcon = (jenis) => {
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     // Delineasi Kerawanan Banjir Setup
-    fetch('data/banjir.geojson')
+    fetch('data/banjir.geojson?v=' + new Date().getTime())
         .then(res => res.json())
         .then(data => {
             L.geoJSON(data, {
@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load GeoJSON data
     let geojsonLayer;
-    fetch('data/kawasan.geojson')
+    fetch('data/kawasan.geojson?v=' + new Date().getTime())
         .then(response => response.json())
         .then(data => {
             geojsonLayer = L.geoJSON(data, {
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             permanent: true,
                             direction: "center",
                             className: "kawasan-label"
-                        }).openTooltip();
+                        });
                     }
                     layer.on({
                         mouseover: function(e) {
