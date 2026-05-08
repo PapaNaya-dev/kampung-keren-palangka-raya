@@ -218,16 +218,14 @@
         <div class="relative w-full h-64 bg-surface-container-high overflow-hidden group">
             <img id="gallery-image" src="https://images.unsplash.com/photo-1546422904-90eab23c3d7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gallery 1" class="w-full h-full object-cover">
             <!-- Navigation -->
-            <button class="absolute top-1/2 -translate-y-1/2 left-4 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <button id="slider-prev" class="absolute top-1/2 -translate-y-1/2 left-4 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <span class="material-symbols-outlined">chevron_left</span>
             </button>
-            <button class="absolute top-1/2 -translate-y-1/2 right-4 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <button id="slider-next" class="absolute top-1/2 -translate-y-1/2 right-4 w-10 h-10 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <span class="material-symbols-outlined">chevron_right</span>
             </button>
-            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                <div class="w-2 h-2 rounded-full bg-white"></div>
-                <div class="w-2 h-2 rounded-full bg-white/50"></div>
-                <div class="w-2 h-2 rounded-full bg-white/50"></div>
+            <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                <!-- Dots injected here -->
             </div>
         </div>
         <!-- Detail Info -->
@@ -643,14 +641,17 @@ document.addEventListener('DOMContentLoaded', function() {
                             document.getElementById('gallery-cta').innerText = ctaText;
 
                             // Dynamic Photo Logic
-                            const imgEl = document.getElementById('gallery-image');
-                            if (imgEl) {
-                                if (p.Foto_1) {
-                                    imgEl.src = p.Foto_1;
-                                } else {
-                                    imgEl.src = "https://images.unsplash.com/photo-1546422904-90eab23c3d7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"; // Fallback placeholder
-                                }
+                            window.currentPhotos = [];
+                            if (p.Foto_1) window.currentPhotos.push(p.Foto_1);
+                            if (p.Foto_2) window.currentPhotos.push(p.Foto_2);
+                            if (p.Foto_3) window.currentPhotos.push(p.Foto_3);
+                            if (p.Foto_4) window.currentPhotos.push(p.Foto_4);
+                            if (p.Foto_5) window.currentPhotos.push(p.Foto_5);
+                            if (window.currentPhotos.length === 0) {
+                                window.currentPhotos.push("https://images.unsplash.com/photo-1546422904-90eab23c3d7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"); // Fallback placeholder
                             }
+                            window.currentPhotoIndex = 0;
+                            if (typeof window.updateSlider === 'function') window.updateSlider();
                             
                             // Parse Condition Data
                             const parseCond = val => {
@@ -835,7 +836,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function closeGallery() {
+    window.closeGallery = function() {
         if(galleryModal) {
             galleryModal.classList.add('opacity-0');
             setTimeout(() => {
@@ -847,6 +848,59 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(btnCloseGallery) {
         btnCloseGallery.addEventListener('click', closeGallery);
+    }
+    
+    // Slider Logic
+    window.currentPhotos = [];
+    window.currentPhotoIndex = 0;
+    const imgEl = document.getElementById('gallery-image');
+    const btnPrev = document.getElementById('slider-prev');
+    const btnNext = document.getElementById('slider-next');
+    const dotsContainer = document.getElementById('slider-dots');
+
+    window.updateSlider = function() {
+        if (!imgEl || window.currentPhotos.length === 0) return;
+        imgEl.src = window.currentPhotos[window.currentPhotoIndex];
+        
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            if (window.currentPhotos.length > 1) {
+                window.currentPhotos.forEach((_, idx) => {
+                    const dot = document.createElement('div');
+                    dot.className = `w-2 h-2 rounded-full cursor-pointer transition-colors ${idx === window.currentPhotoIndex ? 'bg-white' : 'bg-white/50 hover:bg-white/80'}`;
+                    dot.onclick = (e) => {
+                        e.stopPropagation();
+                        window.currentPhotoIndex = idx;
+                        window.updateSlider();
+                    };
+                    dotsContainer.appendChild(dot);
+                });
+            }
+        }
+        
+        if (window.currentPhotos.length <= 1) {
+            if(btnPrev) btnPrev.style.display = 'none';
+            if(btnNext) btnNext.style.display = 'none';
+        } else {
+            if(btnPrev) btnPrev.style.display = 'flex';
+            if(btnNext) btnNext.style.display = 'flex';
+        }
+    };
+
+    if (btnPrev) {
+        btnPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.currentPhotos.length) % window.currentPhotos.length;
+            window.updateSlider();
+        });
+    }
+    
+    if (btnNext) {
+        btnNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.currentPhotos.length;
+            window.updateSlider();
+        });
     }
     
     // Map Toggle Logic
