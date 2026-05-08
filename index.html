@@ -192,7 +192,7 @@
 </div>
 <!-- Floating Agency Logos removed as per request -->
 <!-- GIS Controls (Zoom & Location) -->
-<div class="absolute top-6 right-6 z-10 flex flex-col gap-3">
+<div class="absolute top-6 right-6 z-[60] flex flex-col gap-3 items-end">
 <div class="bg-surface-container-lowest/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,30,64,0.15)] border border-outline-variant/40 flex flex-col overflow-hidden p-1">
 <button id="zoom-in-btn" class="w-12 h-12 flex items-center justify-center text-primary hover:bg-primary/5 active:bg-primary/10 transition-all rounded-xl z-20">
 <span class="material-symbols-outlined text-[24px]">add</span>
@@ -205,6 +205,8 @@
 <button id="my-location-btn" class="w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-[0_8px_32px_rgba(0,30,64,0.25)] flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-20">
 <span class="material-symbols-outlined text-[24px] fill">my_location</span>
 </button>
+<!-- Dynamic Legend Container -->
+<div id="dynamic-legend" class="info legend bg-surface-container-lowest/95 backdrop-blur-xl p-3 rounded-2xl shadow-[0_8px_32px_rgba(0,30,64,0.15)] border border-outline-variant/30 text-body-sm text-on-surface w-max hidden max-h-[60vh] overflow-y-auto"></div>
 </div>
 <!-- Floating Gallery Modal (Hidden by default) -->
 <div id="gallery-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-gutter bg-surface/80 backdrop-blur-sm transition-opacity duration-300 opacity-0">
@@ -707,9 +709,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(myLocationBtn) {
         myLocationBtn.addEventListener('click', () => {
-            map.setView([-2.2359, 113.9160], 13);
+            map.locate({setView: true, maxZoom: 16});
         });
     }
+
+    let userLocationMarker;
+    map.on('locationfound', function(e) {
+        if (!userLocationMarker) {
+            const userIcon = L.divIcon({
+                className: 'user-location-icon',
+                html: '<div class="w-4 h-4 bg-blue-500 border-2 border-white rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>',
+                iconSize: [16, 16],
+                iconAnchor: [8, 8]
+            });
+            userLocationMarker = L.marker(e.latlng, {icon: userIcon}).addTo(map)
+                .bindPopup("Lokasi Anda saat ini").openPopup();
+        } else {
+            userLocationMarker.setLatLng(e.latlng);
+        }
+    });
+
+    map.on('locationerror', function(e) {
+        alert("Gagal mengakses lokasi Anda. Pastikan GPS aktif dan izin lokasi diberikan pada browser.");
+    });
 
     // Onboarding logic
     const onboardingOverlay = document.getElementById('onboarding-overlay');
@@ -893,15 +915,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Polygon click logic is now handled inside the onEachFeature of geojsonLayer.
 
     // Dynamic Legend Logic
-    const legendControl = L.control({position: 'bottomright'});
-    
-    legendControl.onAdd = function (map) {
-        const div = L.DomUtil.create('div', 'info legend bg-surface-container-lowest/95 backdrop-blur-xl p-3 rounded-xl shadow-[0_8px_32px_rgba(0,30,64,0.15)] border border-outline-variant/30 text-body-sm text-on-surface w-max hidden z-[60] mb-16 md:mb-0 mr-4');
-        div.id = 'dynamic-legend';
-        return div;
-    };
-    legendControl.addTo(map);
-
     window.updateLegend = function() {
         const legendDiv = document.getElementById('dynamic-legend');
         if (!legendDiv) return;
