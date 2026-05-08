@@ -280,17 +280,17 @@
 </main>
 <!-- BottomNavBar (Mobile Only) -->
 <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,51,102,0.08)] rounded-t-full pb-[max(env(safe-area-inset-bottom),8px)]">
-<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 Active: scale-90 duration-150 hover:bg-surface-container-highest transition-all" href="#">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 active:scale-90 duration-150 hover:bg-surface-container-highest transition-all" href="#">
 <span class="material-symbols-outlined fill text-[24px]">map</span>
 <span class="font-label-caps text-label-caps mt-1">Peta Utama</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-4 py-1 rounded-full" href="#">
-<span class="material-symbols-outlined text-[24px]">analytics</span>
-<span class="font-label-caps text-label-caps mt-1">Detail Wilayah</span>
+<a id="mobile-nav-layer" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-4 py-1 rounded-full active:scale-90 duration-150 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">layers</span>
+<span class="font-label-caps text-label-caps mt-1">Menu Layer</span>
 </a>
-<a id="mobile-nav-panduan" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-4 py-1 rounded-full" href="#">
-<span class="material-symbols-outlined text-[24px]">info</span>
-<span class="font-label-caps text-label-caps mt-1">Informasi</span>
+<a id="mobile-nav-panduan" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-4 py-1 rounded-full active:scale-90 duration-150 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">help</span>
+<span class="font-label-caps text-label-caps mt-1">Panduan Peta</span>
 </a>
 </nav>
 
@@ -782,17 +782,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sidebar Toggle Logic
     const sidebar = document.getElementById('sidebar');
     const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+    const mobileNavLayer = document.getElementById('mobile-nav-layer');
     let isSidebarOpen = true;
 
+    function toggleSidebar() {
+        isSidebarOpen = !isSidebarOpen;
+        if(isSidebarOpen) {
+            sidebar.classList.remove('-translate-x-full');
+        } else {
+            sidebar.classList.add('-translate-x-full');
+        }
+    }
+
     if (sidebarToggleBtn && sidebar) {
-        sidebarToggleBtn.addEventListener('click', () => {
-            isSidebarOpen = !isSidebarOpen;
-            if(isSidebarOpen) {
-                sidebar.classList.remove('-translate-x-full');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-            }
-        });
+        sidebarToggleBtn.addEventListener('click', toggleSidebar);
+
+        if (mobileNavLayer) {
+            mobileNavLayer.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleSidebar();
+            });
+        }
 
         // Auto close on small screens initially
         if(window.innerWidth < 1024) {
