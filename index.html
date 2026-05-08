@@ -820,6 +820,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 if (geojsonLayer && map.hasLayer(geojsonLayer)) map.removeLayer(geojsonLayer);
             }
+            if (typeof updateLegend === 'function') updateLegend();
         });
     }
 
@@ -830,6 +831,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 map.removeLayer(fasumLayer);
             }
+            if (typeof updateLegend === 'function') updateLegend();
         });
     }
 
@@ -840,6 +842,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 map.removeLayer(banjirLayer);
             }
+            if (typeof updateLegend === 'function') updateLegend();
         });
     }
 
@@ -850,6 +853,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 map.removeLayer(persampahanLayer);
             }
+            if (typeof updateLegend === 'function') updateLegend();
         });
     }
 
@@ -887,6 +891,108 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Polygon click logic is now handled inside the onEachFeature of geojsonLayer.
+
+    // Dynamic Legend Logic
+    const legendControl = L.control({position: 'bottomright'});
+    
+    legendControl.onAdd = function (map) {
+        const div = L.DomUtil.create('div', 'info legend bg-surface-container-lowest/95 backdrop-blur-xl p-3 rounded-xl shadow-[0_8px_32px_rgba(0,30,64,0.15)] border border-outline-variant/30 text-body-sm text-on-surface w-max hidden z-[60] mb-16 md:mb-0 mr-4');
+        div.id = 'dynamic-legend';
+        return div;
+    };
+    legendControl.addTo(map);
+
+    window.updateLegend = function() {
+        const legendDiv = document.getElementById('dynamic-legend');
+        if (!legendDiv) return;
+
+        let content = '';
+        
+        if (toggleKawasan && toggleKawasan.checked) {
+            content += `<div class="mb-3 last:mb-0">
+                <div class="font-label-caps text-[10px] text-outline mb-1.5 font-bold tracking-wider">KAWASAN LOMBA</div>
+                <div class="flex items-center gap-2 text-[12px] font-medium">
+                    <div class="w-4 h-4 rounded bg-[#97f3b5] border-2 border-dashed border-[#006d3d] opacity-80"></div>
+                    <span>Area Kawasan</span>
+                </div>
+            </div>`;
+        }
+
+        if (toggleBanjir && toggleBanjir.checked) {
+            content += `<div class="mb-3 last:mb-0">
+                <div class="font-label-caps text-[10px] text-outline mb-1.5 font-bold tracking-wider">KERAWANAN BANJIR</div>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                    <div class="flex items-center gap-2 text-[12px] font-medium"><div class="w-4 h-4 rounded bg-[#ba1a1a] opacity-70 border border-[#ba1a1a]"></div> Sangat Tinggi</div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium"><div class="w-4 h-4 rounded bg-[#e65100] opacity-60 border border-[#e65100]"></div> Tinggi</div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium"><div class="w-4 h-4 rounded bg-[#fbc02d] opacity-50 border border-[#fbc02d]"></div> Sedang</div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium"><div class="w-4 h-4 rounded bg-[#7ed99e] opacity-40 border border-[#7ed99e]"></div> Rendah</div>
+                </div>
+            </div>`;
+        }
+
+        if (togglePersampahan && togglePersampahan.checked) {
+            content += `<div class="mb-3 last:mb-0">
+                <div class="font-label-caps text-[10px] text-outline mb-1.5 font-bold tracking-wider">PERSAMPAHAN</div>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-[#ffdad6] text-[#93000a] border-[#93000a] w-5 h-5 rounded flex items-center justify-center border shadow-sm"><span class="material-symbols-outlined text-[12px]">delete</span></div> TPS
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-[#d5e3ff] text-[#001b3c] border-[#001b3c] w-5 h-5 rounded flex items-center justify-center border shadow-sm"><span class="material-symbols-outlined text-[12px]">recycling</span></div> TPST
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-[#e0e3e5] text-[#1b1f20] border-[#1b1f20] w-5 h-5 rounded flex items-center justify-center border shadow-sm"><span class="material-symbols-outlined text-[12px]">auto_delete</span></div> TPA
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-[#97f3b5] text-[#00210f] border-[#00210f] w-5 h-5 rounded flex items-center justify-center border shadow-sm"><span class="material-symbols-outlined text-[12px]">delete_outline</span></div> IPESATU
+                    </div>
+                </div>
+            </div>`;
+        }
+        
+        if (toggleFasum && toggleFasum.checked) {
+            content += `<div class="mb-3 last:mb-0">
+                <div class="font-label-caps text-[10px] text-outline mb-1.5 font-bold tracking-wider">FASILITAS UMUM</div>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-2">
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-error text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-[12px]">local_hospital</span></div> RSIA
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-tertiary text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-[12px]">apartment</span></div> Rusunawa
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-secondary text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-[12px]">directions_boat</span></div> Pelabuhan
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-[#e65100] text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-[12px]">storefront</span></div> Pasar
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-[#006d3d] text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-[12px]">park</span></div> Wisata
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-[#003366] text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-[12px]">account_balance</span></div> Ibadah
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-outline text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-[12px]">nature</span></div> TPU
+                    </div>
+                    <div class="flex items-center gap-2 text-[12px] font-medium">
+                        <div class="bg-[#1f477b] text-white w-5 h-5 rounded-full flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-[12px]">school</span></div> Sekolah
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        if (content !== '') {
+            legendDiv.innerHTML = content;
+            legendDiv.classList.remove('hidden');
+        } else {
+            legendDiv.innerHTML = '';
+            legendDiv.classList.add('hidden');
+        }
+    };
+    
+    // Initialize legend on load
+    updateLegend();
 });
 </script>
 </body></html>
