@@ -113,6 +113,15 @@
     body {
       min-height: max(884px, 100dvh);
     }
+    .kawasan-label {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      font-weight: 700;
+      color: #001e40;
+      text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body class="bg-background text-on-surface h-screen w-screen overflow-hidden flex flex-col font-body-base">
@@ -152,6 +161,13 @@
         Fasilitas Umum
     </div>
     <input type="checkbox" id="toggle-fasum" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4">
+</label>
+<label class="flex items-center justify-between px-6 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-r-full mr-4 cursor-pointer hover:translate-x-1 transition-transform font-body-sm text-body-sm">
+    <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined">delete</span>
+        Sebaran Persampahan
+    </div>
+    <input type="checkbox" id="toggle-persampahan" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4">
 </label>
 <hr class="my-2 border-outline-variant/20 mx-6">
 <a id="nav-panduan-sidebar" class="flex items-center gap-4 px-6 py-3 text-primary hover:bg-surface-container-high rounded-r-full mr-4 hover:translate-x-1 transition-transform font-body-sm text-body-sm cursor-pointer">
@@ -457,49 +473,107 @@ document.addEventListener('DOMContentLoaded', function() {
     // Global state for map
     let currentSearchQuery = '';
 
-    // Fasilitas Umum Dummy Data
-    const fasumData = {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "properties": { "nama": "Masjid Raya Darussalam", "jenis": "Rumah Ibadah" },
-                "geometry": { "type": "Point", "coordinates": [113.9189, -2.2132] }
-            },
-            {
-                "type": "Feature",
-                "properties": { "nama": "Gereja Katedral Santa Maria", "jenis": "Rumah Ibadah" },
-                "geometry": { "type": "Point", "coordinates": [113.9221, -2.2155] }
-            },
-            {
-                "type": "Feature",
-                "properties": { "nama": "Pelabuhan Rambang", "jenis": "Pelabuhan" },
-                "geometry": { "type": "Point", "coordinates": [113.9298, -2.2215] }
-            },
-            {
-                "type": "Feature",
-                "properties": { "nama": "Pasar Besar Palangka Raya", "jenis": "Pasar" },
-                "geometry": { "type": "Point", "coordinates": [113.9165, -2.2105] }
-            }
-        ]
-    };
-    
-    // Custom Icons for Fasum
-    const fasumIcon = L.divIcon({
-        className: 'custom-fasum-icon',
-        html: '<div class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center shadow-lg border-2 border-white"><span class="material-symbols-outlined text-[14px]">location_city</span></div>',
-        iconSize: [24, 24],
-        iconAnchor: [12, 12]
-    });
+    // Layers
+    let fasumLayer = L.layerGroup();
+    let persampahanLayer = L.layerGroup();
+    let banjirLayer = L.layerGroup();
 
-    let fasumLayer = L.geoJSON(fasumData, {
-        pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, {icon: fasumIcon});
-        },
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup(`<div class="font-body-base text-sm"><b>${feature.properties.nama}</b><br>${feature.properties.jenis}</div>`);
-        }
-    });
+    // Fasilitas Umum Setup
+    fetch('data/fasum.geojson')
+        .then(res => res.json())
+        .then(data => {
+            const getFasumIcon = (kat, nama) => {
+                let iconName = 'location_city';
+                let color = 'bg-primary text-white';
+                if (kat === 'RUMAH SAKIT IBU DAN ANAK') { iconName = 'local_hospital'; color = 'bg-error text-white'; }
+                else if (kat === 'RUSUNAWA') { iconName = 'apartment'; color = 'bg-tertiary text-white'; }
+                else if (kat === 'PELABUHAN') { iconName = 'directions_boat'; color = 'bg-secondary text-white'; }
+                else if (kat === 'PASAR') { iconName = 'storefront'; color = 'bg-[#e65100] text-white'; }
+                else if (kat === 'TEMPAT WISATA') { iconName = 'park'; color = 'bg-[#006d3d] text-white'; }
+                else if (kat === 'RUMAH IBADAH') {
+                    if (nama && nama.toLowerCase().includes('gereja')) iconName = 'church';
+                    else if (nama && nama.toLowerCase().includes('masjid')) iconName = 'mosque';
+                    else iconName = 'account_balance';
+                    color = 'bg-[#003366] text-white';
+                }
+                else if (kat === 'TPU') { iconName = 'nature'; color = 'bg-outline text-white'; }
+                else if (kat === 'SEKOLAH') { iconName = 'school'; color = 'bg-[#1f477b] text-white'; }
+
+                return L.divIcon({
+                    className: 'custom-fasum-icon',
+                    html: `<div class="${color} w-6 h-6 rounded-full flex items-center justify-center shadow-lg border-2 border-white"><span class="material-symbols-outlined text-[14px]">${iconName}</span></div>`,
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                });
+            };
+
+            L.geoJSON(data, {
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, {icon: getFasumIcon(feature.properties.Kategori, feature.properties.Nama)});
+                },
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(`<div class="font-body-base text-sm"><b>${feature.properties.Nama}</b><br>${feature.properties.Kategori}</div>`);
+                }
+            }).addTo(fasumLayer);
+        });
+
+    // Sebaran Persampahan Setup
+    fetch('data/persampahan.geojson')
+        .then(res => res.json())
+        .then(data => {
+            const getSampahIcon = (jenis) => {
+                let iconName = 'delete';
+                let color = 'bg-surface-variant text-on-surface-variant border-outline';
+                if (jenis === 'TPS') { color = 'bg-[#ffdad6] text-[#93000a] border-[#93000a]'; }
+                else if (jenis === 'TPST') { iconName = 'recycling'; color = 'bg-[#d5e3ff] text-[#001b3c] border-[#001b3c]'; }
+                else if (jenis === 'TPA') { iconName = 'auto_delete'; color = 'bg-[#e0e3e5] text-[#1b1f20] border-[#1b1f20]'; }
+                else if (jenis === 'IPESATU') { iconName = 'delete_outline'; color = 'bg-[#97f3b5] text-[#00210f] border-[#00210f]'; }
+
+                return L.divIcon({
+                    className: 'custom-sampah-icon',
+                    html: `<div class="${color} w-6 h-6 rounded flex items-center justify-center shadow-md border"><span class="material-symbols-outlined text-[14px]">${iconName}</span></div>`,
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                });
+            };
+
+            L.geoJSON(data, {
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, {icon: getSampahIcon(feature.properties.Orde_III)});
+                },
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(`<div class="font-body-base text-sm"><b>${feature.properties.Orde_III || 'Persampahan'}</b><br>${feature.properties.Keterangan || ''}</div>`);
+                }
+            }).addTo(persampahanLayer);
+        });
+
+    // Delineasi Kerawanan Banjir Setup
+    fetch('data/banjir.geojson')
+        .then(res => res.json())
+        .then(data => {
+            L.geoJSON(data, {
+                style: function(feature) {
+                    let pot = feature.properties.POTENSI;
+                    let color = '#a7c8ff';
+                    let fillOpacity = 0.4;
+                    if (pot === 'Sangat Tinggi') { color = '#ba1a1a'; fillOpacity = 0.6; }
+                    else if (pot === 'Tinggi') { color = '#e65100'; fillOpacity = 0.5; }
+                    else if (pot === 'Sedang') { color = '#fbc02d'; fillOpacity = 0.4; }
+                    else if (pot === 'Rendah') { color = '#7ed99e'; fillOpacity = 0.3; }
+                    
+                    return {
+                        color: color,
+                        weight: 1,
+                        opacity: 0.8,
+                        fillColor: color,
+                        fillOpacity: fillOpacity
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(`<div class="font-body-base text-sm"><b>Kerawanan Banjir</b><br>Potensi: ${feature.properties.POTENSI}</div>`);
+                }
+            }).addTo(banjirLayer);
+        });
 
     // Load GeoJSON data
     let geojsonLayer;
@@ -508,17 +582,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             geojsonLayer = L.geoJSON(data, {
                 style: function(feature) {
-                    let fillColor = '#97f3b5';
-                    let color = '#006d3d';
-                    
-                    if (feature.properties.Kecamatan === 'PAHANDUT') {
-                        fillColor = '#d5e3ff';
-                        color = '#001e40';
-                    } else if (feature.properties.Kecamatan === 'JEKAN RAYA') {
-                        fillColor = '#ffdad6';
-                        color = '#ba1a1a';
-                    }
-                    
                     let opacity = 1;
                     let fillOpacity = 0.6;
 
@@ -531,15 +594,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
 
                     return {
-                        color: color,
+                        color: '#006d3d',
                         weight: 2,
                         opacity: opacity,
-                        fillColor: fillColor,
+                        fillColor: '#97f3b5',
                         fillOpacity: fillOpacity,
                         dashArray: '3'
                     };
                 },
                 onEachFeature: function(feature, layer) {
+                    if (feature.properties.Kawasan) {
+                        layer.bindTooltip(feature.properties.Kawasan, {
+                            permanent: true,
+                            direction: "center",
+                            className: "kawasan-label"
+                        }).openTooltip();
+                    }
                     layer.on({
                         mouseover: function(e) {
                             var l = e.target;
@@ -740,6 +810,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Map Toggle Logic
     const toggleKawasan = document.getElementById('toggle-kawasan');
     const toggleFasum = document.getElementById('toggle-fasum');
+    const toggleBanjir = document.getElementById('toggle-banjir');
+    const togglePersampahan = document.getElementById('toggle-persampahan');
 
     if (toggleKawasan) {
         toggleKawasan.addEventListener('change', function() {
@@ -757,6 +829,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 map.addLayer(fasumLayer);
             } else {
                 map.removeLayer(fasumLayer);
+            }
+        });
+    }
+
+    if (toggleBanjir) {
+        toggleBanjir.addEventListener('change', function() {
+            if (this.checked) {
+                map.addLayer(banjirLayer);
+            } else {
+                map.removeLayer(banjirLayer);
+            }
+        });
+    }
+
+    if (togglePersampahan) {
+        togglePersampahan.addEventListener('change', function() {
+            if (this.checked) {
+                map.addLayer(persampahanLayer);
+            } else {
+                map.removeLayer(persampahanLayer);
             }
         });
     }

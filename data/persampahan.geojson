@@ -1,0 +1,2099 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92859016814106,
+          -2.207727388638449
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92889761704747,
+          -2.206888287689712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92546130749383,
+          -2.2099361619447966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9224273221161,
+          -2.2121561163367827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92062456680554,
+          -2.213065664812584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92191566648256,
+          -2.2091524085477037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9212015893293,
+          -2.2091157673661304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92135159753782,
+          -2.2074282831645213
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91944877706783,
+          -2.207966858432548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.87562495528107,
+          -2.240697462077214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92048961075746,
+          -2.206142495055273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91790674833261,
+          -2.20441023517738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91390331242421,
+          -2.2022764017138505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91421725589962,
+          -2.203982085246041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90336719190447,
+          -2.216011596921794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90766119008909,
+          -2.220963607691985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90765937024597,
+          -2.220032956793567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9083377491843,
+          -2.2178630985314847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90688494756998,
+          -2.2149005127364725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90861621052132,
+          -2.2139295287583294
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91057438555673,
+          -2.213712544849829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91079528619956,
+          -2.214087583162728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91149498966664,
+          -2.215307992122743
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91233340975593,
+          -2.2172317503077235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91337481322505,
+          -2.2169857323061892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91244749787677,
+          -2.214453289409611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91257437520972,
+          -2.213003417768145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91521650757302,
+          -2.2172079717623276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91511201856409,
+          -2.214298771606796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91529761159097,
+          -2.212912708749927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9160911985132,
+          -2.2123812500618536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91712712537934,
+          -2.2119469625677954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92958616601784,
+          -2.217980211912805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90602825841366,
+          -2.2040140555144565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90555343207934,
+          -2.208615856415681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90969720126527,
+          -2.210381797169232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9029737808096,
+          -2.2090726221209573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89938165720518,
+          -2.20390308520472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88895534895472,
+          -2.2054078848400653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89476177236048,
+          -2.1953727504645237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.8914691864264,
+          -2.1896148567705493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89299375873429,
+          -2.188401126569742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88373833404358,
+          -2.1834554222106206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88296310467038,
+          -2.182883990970977
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88159536280955,
+          -2.181739815734622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.87979636634111,
+          -2.17892410407209
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.87251737879053,
+          -2.175356912202079
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.86347688185285,
+          -2.1823589012091698
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.86470622074897,
+          -2.1769802264311693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.8506356344701,
+          -2.1645299882701847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.83682632928996,
+          -2.151654622117567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.85856538989569,
+          -2.1693496992323045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.86800299957272,
+          -2.1680544554246857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.86900787718571,
+          -2.167104905758246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.87127424531083,
+          -2.1707260815123046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.87680460333395,
+          -2.1704872102933854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88012151692291,
+          -2.172913442930524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.8811518979788,
+          -2.176877576174627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89089154185399,
+          -2.1842020619179925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89494804094349,
+          -2.1866431191311184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89664163562823,
+          -2.1936940703289998
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90484541226091,
+          -2.1945591882383417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90595724969023,
+          -2.1969159793901776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90719346257922,
+          -2.1977910943714023
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90339244060421,
+          -2.1968637162109896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.8974410869644,
+          -2.1984490833142982
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89425435815444,
+          -2.199385966584303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88884066545481,
+          -2.2075721141317355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.891722643538,
+          -2.2128649363144044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89271410482449,
+          -2.2147178236243033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89731437272717,
+          -2.218017343909153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90773083145982,
+          -2.2126680133254637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90703801854735,
+          -2.2140893963516692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.89002608713052,
+          -2.2329254269994467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91409509387391,
+          -2.2196418766704022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91815429050435,
+          -2.2223219485715497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91976732719411,
+          -2.2224350073096275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91589312882594,
+          -2.2212011580336313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92056669267774,
+          -2.220296502287074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88290815549331,
+          -2.190605283649045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88126643651121,
+          -2.192627822632054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.87863888404273,
+          -2.201467451177576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.87493416567415,
+          -2.2039865794976787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91701190124904,
+          -2.2766383333029445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92088293300644,
+          -2.284365736988024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "IPESATU",
+        "Orde_IV": null,
+        "Keterangan": "Rencana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91242644786817,
+          -2.2955869493494716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92400574114446,
+          -2.2739958028892664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91824238207627,
+          -2.264324010883468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92258309104109,
+          -2.2633098667079974
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91747581831018,
+          -2.2529075490807218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9188253433572,
+          -2.235271011596731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91969359837167,
+          -2.228122982137822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92218937083126,
+          -2.230268466917563
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92014971151386,
+          -2.232725332927816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92274469254828,
+          -2.240739203090553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93325684592398,
+          -2.2362419381978516
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94497042333781,
+          -2.2503233748525484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.95349712814108,
+          -2.235653350545366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93001517907832,
+          -2.198548408575091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88830964520446,
+          -2.186447901273153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91023794710863,
+          -2.204361197919615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93634875989282,
+          -2.205114686571871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.885495719578,
+          -2.226564234847541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93422954389975,
+          -2.263840381489755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93568726352294,
+          -2.258621055251856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.76029219052792,
+          -1.9799732387791498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.76006190882404,
+          -1.994820829772359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.75872608984925,
+          -1.997213975394119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPA",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.81150385075556,
+          -2.134842594677064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPA",
+        "Orde_IV": null,
+        "Keterangan": "Rencana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.95280505720325,
+          -2.2890899192211767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPST",
+        "Orde_IV": null,
+        "Keterangan": "Rencana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93269718391802,
+          -2.234339074345897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "IPESATU",
+        "Orde_IV": null,
+        "Keterangan": "Rencana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93605480994665,
+          -2.204954554499272
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPS",
+        "Orde_IV": null,
+        "Keterangan": "Eksisting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91298691671112,
+          -2.208739213925354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "IPESATU",
+        "Orde_IV": null,
+        "Keterangan": "Rencana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.88233817445953,
+          -2.180001308278285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "IPESATU",
+        "Orde_IV": null,
+        "Keterangan": "Rencana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.76298491677989,
+          -1.9907580079542995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0.0,
+        "Orde_I": "Infrastruktur Perkotaan",
+        "Orde_II": "Sistem Jaringan Persampahan Kota",
+        "Orde_III": "TPST",
+        "Orde_IV": null,
+        "Keterangan": "Rencana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.81218885444676,
+          -2.1338698296447873
+        ]
+      }
+    }
+  ]
+}

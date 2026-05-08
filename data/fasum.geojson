@@ -1,0 +1,473 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "PASAR KAHAYAN",
+        "Kategori": "PASAR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90840306547118,
+          -2.1978470994744446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "RSIA Yasmin",
+        "Kategori": "RUMAH SAKIT IBU DAN ANAK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90955277430606,
+          -2.1991685953415847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "RUSUN SESEPMADU",
+        "Kategori": "RUSUNAWA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90586153980328,
+          -2.1966155663943505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "TPU MAKAM MUSLIMIN",
+        "Kategori": "TPU"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9042762798965,
+          -2.1944953333232413
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "KOMPLEK PEKUBURAN KRISTEN",
+        "Kategori": "TPU"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9033029814119,
+          -2.1919325705292896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "PELABUHAN RAMBANG",
+        "Kategori": "PELABUHAN"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9399075207941,
+          -2.203772546497409
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "KAWASAN WISATA KERENG BANGKIRAI",
+        "Kategori": "TEMPAT WISATA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9051048002314,
+          -2.296351818097022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Madrasah MI Hidayatul Muhajirin Palangka",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90817038929237,
+          -2.196158467996637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "TK Permatahati Dua Palangka",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91011380328919,
+          -2.1944243769965786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "TK Al Amin Palangka",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91268598828476,
+          -2.1914476249966497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "SD Negeri 14 Palangka",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.91404503828252,
+          -2.1913085669965855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Madrasah MI Mutiara Insan Palangka",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9146068632816,
+          -2.190393527996544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "SMA Karya Palangkaraya",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90700127429426,
+          -2.1953133839966252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "SMP Karya Palangkaraya",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90686866129444,
+          -2.195169724996636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Madrasah MI Darus Saadah Palangka",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90538884029691,
+          -2.194966321996695
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "TK Darus Saadah Palangka",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90507909529734,
+          -2.1947300739966917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "SD Negeri 1 Pahandutseberang",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93617711624519,
+          -2.200996351996371
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "PAUD Luthfillah",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94392666423172,
+          -2.2049384039963336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "TK TKA TQA Unit 040 Darusallam Dua Pahandut",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94203843723507,
+          -2.2084453259963337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "SD Negeri 8 Pahandut",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94223658223468,
+          -2.2088654499963623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MASJID DARUTH THAYYIBAH",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93201251376749,
+          -2.2018465366979605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MASJID RAUDHATUL ANWAR",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9252266416139,
+          -2.2041499575048316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "LANGGAR HUBBUL KHAIR",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.92692002628621,
+          -2.204585006620481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MASJID MINI AL-FALAH",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9436343373412,
+          -2.204080324985847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MASJID MINI SABILAL MUTHADIN",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94184475164602,
+          -2.2055284342233006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MASJID LUTHFILLAH",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94107236843337,
+          -2.2041499575048302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "LANGGAR AL-KAUTSAR",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9418068262428,
+          -2.2087272100992865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "SD ISLAM NURUL IHSAN",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94003604908086,
+          -2.2095513975281396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MASJID NURUL IHSAN",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93945699292375,
+          -2.211335338097049
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "SMP - SMA ISLAM NURUL IHSAN",
+        "Kategori": "SEKOLAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.93907465552505,
+          -2.2114413268992914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MASJID AL-AQSA",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94126322879589,
+          -2.2134027345878597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MUSHOLA DARUL FALAH",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.90749111970014,
+          -2.2951596102894816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "MASJID JAMI SYUHADA",
+        "Kategori": "RUMAH IBADAH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9111023580981,
+          -2.2958065975862043
+        ]
+      }
+    }
+  ]
+}
