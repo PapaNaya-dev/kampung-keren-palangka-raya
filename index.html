@@ -680,6 +680,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             if (chartData.drn > 50 || chartData.lmb > 50 || chartData.smp > 50) {
                                 badgesContainer.innerHTML += `<span class="bg-[#e65100] text-white px-3 py-1 rounded-full text-[10px] font-label-caps flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">warning</span> Rawan Sanitasi (>50%)</span>`;
                             }
+                            if (chartData.smp >= 60) {
+                                badgesContainer.innerHTML += `<span class="bg-[#7b1fa2] text-white px-3 py-1 rounded-full text-[10px] font-label-caps flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">delete</span> Kritis Persampahan (${chartData.smp}%)</span>`;
+                                badgesContainer.innerHTML += `<span class="bg-[#4e342e] text-white px-3 py-1 rounded-full text-[10px] font-label-caps flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">construction</span> Butuh Infrastruktur Sampah</span>`;
+                            }
+                            if (p.Potensi_UMKM) {
+                                badgesContainer.innerHTML += `<span class="bg-[#00695c] text-white px-3 py-1 rounded-full text-[10px] font-label-caps flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">storefront</span> Potensi Pengembangan UMKM</span>`;
+                            }
                             
                             const lowerCta = String(p.Potensi_1 || '').toLowerCase() + String(p.Call_to_Ac || '').toLowerCase();
                             if (lowerCta.includes('wisata') || lowerCta.includes('ekowisata')) {

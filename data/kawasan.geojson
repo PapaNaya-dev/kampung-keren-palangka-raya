@@ -377,10 +377,16 @@
         "Kondisi_ai": "11%",
         "Kondisi_Dr": "11%",
         "Kondisi__1": "54%",
-        "Kondisi_Pe": "52%",
+        "Kondisi_Pe": "65%",
         "Kondisi_Pr": "50%",
         "Potensi_1": "1. Kawasan Komersial Padat: Menjadi pusat konsentrasi aktivitas niaga dan permukiman, wilayah ini memegang peran penting dalam penggerak ekonomi kota. Kawasan ini juga merupakan daerah Pasar Kahayan.\n2. Sentra Ekonomi Kerakyatan: Potensi ekonomi berbasis masyarakat sangat kuat, namun memerlukan dukungan infrastruktur yang memadai.",
-        "Call_to_Ac": "\"Harmonisasikan pertumbuhan ekonomi kerakyatan dengan penataan lingkungan!\"\nTerletak di kawasan padat penduduk yang strategis, wilayah ini memiliki potensi besar dalam perdagangan dan jasa skala lokal. Meski demikian, permasalahan sanitasi, pengelolaan limbah, dan tingginya risiko kebakaran permukiman menuntut penanganan spasial yang komprehensif."
+        "Call_to_Ac": "\"Harmonisasikan pertumbuhan ekonomi kerakyatan dengan penataan lingkungan!\"\nTerletak di kawasan padat penduduk yang strategis, wilayah ini memiliki potensi besar dalam perdagangan dan jasa skala lokal. Meski demikian, permasalahan sanitasi, pengelolaan limbah, dan tingginya risiko kebakaran permukiman menuntut penanganan spasial yang komprehensif.",
+        "Foto_1": "photos/Kawasan_IX_1.jpg",
+        "Foto_2": "photos/Kawasan_IX_2.jpg",
+        "Foto_3": "photos/Kawasan_IX_3.jpg",
+        "Foto_4": "photos/Kawasan_IX_4.jpg",
+        "Foto_5": "photos/Kawasan_IX_5.jpg",
+        "Potensi_UMKM": true
       },
       "geometry": {
         "type": "Polygon",
@@ -489,10 +495,16 @@
         "Kondisi_ai": "11%",
         "Kondisi_Dr": "11%",
         "Kondisi__1": "54%",
-        "Kondisi_Pe": "52%",
+        "Kondisi_Pe": "65%",
         "Kondisi_Pr": "50%",
         "Potensi_1": "1. Area Padat Interaksi: Fungsi campuran antara permukiman rapat dan ruang usaha menjadikannya wilayah yang dinamis namun rentan.\n2. Pengembangan Ekonomi Mikro: Sangat potensial untuk diberdayakan menjadi klaster usaha masyarakat yang tangguh dengan perbaikan kualitas tata ruang.",
-        "Call_to_Ac": "\"Integrasikan potensi niaga mandiri dengan peningkatan ketahanan kawasan!\"\nDengan lokasinya yang vital, area ini tumbuh sebagai pusat interaksi ekonomi. Tantangan utamanya adalah bagaimana mengelola kepadatan ini agar tidak memicu masalah lingkungan turunan, seperti sanitasi buruk dan rawan api."
+        "Call_to_Ac": "\"Integrasikan potensi niaga mandiri dengan peningkatan ketahanan kawasan!\"\nDengan lokasinya yang vital, area ini tumbuh sebagai pusat interaksi ekonomi. Tantangan utamanya adalah bagaimana mengelola kepadatan ini agar tidak memicu masalah lingkungan turunan, seperti sanitasi buruk dan rawan api.",
+        "Foto_1": "photos/Kawasan_XII_1.jpg",
+        "Foto_2": "photos/Kawasan_XII_2.jpg",
+        "Foto_3": "photos/Kawasan_XII_3.jpg",
+        "Foto_4": "photos/Kawasan_XII_4.jpg",
+        "Foto_5": "photos/Kawasan_XII_5.jpg",
+        "Potensi_UMKM": true
       },
       "geometry": {
         "type": "Polygon",
@@ -1116,10 +1128,16 @@
         "Kondisi_ai": "11%",
         "Kondisi_Dr": "11%",
         "Kondisi__1": "54%",
-        "Kondisi_Pe": "52%",
+        "Kondisi_Pe": "65%",
         "Kondisi_Pr": "50%",
         "Potensi_1": "1. Sentra Aktivitas Warga: Kawasan ini merupakan nadi kegiatan sehari-hari yang padat, memadukan fungsi hunian dengan fungsi ekonomi.\n2. Penggerak Sektor Informal: Memiliki prospek bagus untuk penataan ekonomi kreatif dan UMKM jika didukung oleh penataan lingkungan yang lebih sehat.",
-        "Call_to_Ac": "\"Wujudkan keseimbangan antara produktivitas ekonomi dan kualitas hunian!\"\nBerada di titik strategis dengan mobilitas tinggi, kawasan ini mengandalkan sektor jasa dan perdagangan informal. Namun, kepadatan bangunan yang tinggi membawa risiko kerentanan sanitasi dan ancaman kebakaran yang butuh segera diatasi."
+        "Call_to_Ac": "\"Wujudkan keseimbangan antara produktivitas ekonomi dan kualitas hunian!\"\nBerada di titik strategis dengan mobilitas tinggi, kawasan ini mengandalkan sektor jasa dan perdagangan informal. Namun, kepadatan bangunan yang tinggi membawa risiko kerentanan sanitasi dan ancaman kebakaran yang butuh segera diatasi.",
+        "Foto_1": "photos/Kawasan_XI_1.jpg",
+        "Foto_2": "photos/Kawasan_XI_2.jpg",
+        "Foto_3": "photos/Kawasan_XI_3.jpg",
+        "Foto_4": "photos/Kawasan_XI_4.jpg",
+        "Foto_5": "photos/Kawasan_XI_5.jpg",
+        "Potensi_UMKM": true
       },
       "geometry": {
         "type": "Polygon",
@@ -1216,10 +1234,16 @@
         "Kondisi_ai": "11%",
         "Kondisi_Dr": "11%",
         "Kondisi__1": "54%",
-        "Kondisi_Pe": "52%",
+        "Kondisi_Pe": "65%",
         "Kondisi_Pr": "50%",
         "Potensi_1": "1. Permukiman Terintegrasi Jasa: Tingginya kepadatan bangunan mengindikasikan kuatnya aktivitas masyarakat yang berpusat pada sektor perdagangan kecil dan menengah.\n2. Peluang Pengembangan Usaha: Potensi pengembangan usaha lokal sangat terbuka asalkan diiringi dengan penataan sarana prasarana yang layak.",
-        "Call_to_Ac": "\"Padukan dinamika perekonomian lokal dengan perbaikan mutu lingkungan!\"\nMeskipun didukung oleh letaknya yang berada di pusat keramaian dan potensi kegiatan niaga mikro, kawasan ini masih menghadapi tantangan serius terkait infrastruktur dasar seperti drainase dan pencegahan bahaya kebakaran di area padat."
+        "Call_to_Ac": "\"Padukan dinamika perekonomian lokal dengan perbaikan mutu lingkungan!\"\nMeskipun didukung oleh letaknya yang berada di pusat keramaian dan potensi kegiatan niaga mikro, kawasan ini masih menghadapi tantangan serius terkait infrastruktur dasar seperti drainase dan pencegahan bahaya kebakaran di area padat.",
+        "Foto_1": "photos/Kawasan_X_1.jpg",
+        "Foto_2": "photos/Kawasan_X_2.jpg",
+        "Foto_3": "photos/Kawasan_X_3.jpg",
+        "Foto_4": "photos/Kawasan_X_4.jpg",
+        "Foto_5": "photos/Kawasan_X_5.jpg",
+        "Potensi_UMKM": true
       },
       "geometry": {
         "type": "Polygon",
@@ -1492,7 +1516,12 @@
         "Kondisi_Pe": "52%",
         "Kondisi_Pr": "50%",
         "Potensi_1": "1. Pusat Permukiman dan Jasa: Kelurahan Palangka merupakan salah satu kelurahan terpadat di Kota Palangka Raya, menjadikannya pusat aktivitas penduduk, perdagangan, dan jasa.\n\n2. UMKM dan Ekonomi Kreatif: Wilayah ini berpotensi dalam pengembangan produk",
-        "Call_to_Ac": "\"Optimalisasi ruang cerdas di kawasan padat dan strategis!\"\nDikelilingi oleh pusat aktivitas dan kekayaan UMKM lokal, Kawasan VIII menantang Anda untuk menghadirkan konsep tata ruang cerdas di lahan terbatas. Tunjukkan bagaimana ide rancangan tapak Anda dapat meningkatkan kualitas hidup warga di tengah tingginya kepadatan penduduk."
+        "Call_to_Ac": "\"Optimalisasi ruang cerdas di kawasan padat dan strategis!\"\nDikelilingi oleh pusat aktivitas dan kekayaan UMKM lokal, Kawasan VIII menantang Anda untuk menghadirkan konsep tata ruang cerdas di lahan terbatas. Tunjukkan bagaimana ide rancangan tapak Anda dapat meningkatkan kualitas hidup warga di tengah tingginya kepadatan penduduk.",
+        "Foto_1": "photos/Kawasan_VIII_1.jpg",
+        "Foto_2": "photos/Kawasan_VIII_2.jpg",
+        "Foto_3": "photos/Kawasan_VIII_3.jpg",
+        "Foto_4": "photos/Kawasan_VIII_4.jpg",
+        "Foto_5": "photos/Kawasan_VIII_5.jpg"
       },
       "geometry": {
         "type": "Polygon",
