@@ -855,7 +855,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.currentPhotoIndex = 0;
     const imgEl = document.getElementById('gallery-image');
     const btnPrev = document.getElementById('slider-prev');
-    const btnNext = document.getElementById('slider-next');
+    const btnSliderNext = document.getElementById('slider-next');
     const dotsContainer = document.getElementById('slider-dots');
 
     window.updateSlider = function() {
@@ -880,10 +880,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (window.currentPhotos.length <= 1) {
             if(btnPrev) btnPrev.style.display = 'none';
-            if(btnNext) btnNext.style.display = 'none';
+            if(btnSliderNext) btnSliderNext.style.display = 'none';
         } else {
             if(btnPrev) btnPrev.style.display = 'flex';
-            if(btnNext) btnNext.style.display = 'flex';
+            if(btnSliderNext) btnSliderNext.style.display = 'flex';
         }
     };
 
@@ -895,8 +895,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    if (btnNext) {
-        btnNext.addEventListener('click', (e) => {
+    if (btnSliderNext) {
+        btnSliderNext.addEventListener('click', (e) => {
             e.stopPropagation();
             window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.currentPhotos.length;
             window.updateSlider();
