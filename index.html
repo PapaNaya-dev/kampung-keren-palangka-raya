@@ -172,7 +172,21 @@
     Panduan Pengguna
 </a>
 </nav>
-<div class="mt-auto px-6">
+<!-- Penghitung Pengunjung Harian -->
+<div class="mt-auto px-6 mb-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">visibility</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Pengunjung Hari Ini</h3>
+</div>
+<div class="text-center">
+<span id="visitor-count" class="text-4xl font-bold text-primary">0</span>
+<p class="text-xs text-on-surface-variant mt-1">kunjungan unik</p>
+</div>
+</div>
+</div>
+
+<div class="px-6">
 <div class="bg-surface p-4 rounded-xl border border-outline-variant/30 shadow-sm">
 <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2">Tampilan Peta</h3>
 <div class="flex gap-2">
@@ -384,6 +398,51 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // === SISTEM PENGHITUNG PENGUNJUNG HARIAN ===
+    function initVisitorCounter() {
+        const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+        const storedDate = localStorage.getItem('lastVisitDate');
+        let visitorCount = parseInt(localStorage.getItem('dailyVisitorCount') || '0');
+        
+        // Jika hari baru, reset counter
+        if (storedDate !== today) {
+            visitorCount = 1;
+            localStorage.setItem('dailyVisitorCount', visitorCount.toString());
+            localStorage.setItem('lastVisitDate', today);
+        } else {
+            // Cek apakah ini kunjungan unik (session baru)
+            const sessionChecked = sessionStorage.getItem('visitSessionChecked');
+            if (!sessionChecked) {
+                visitorCount++;
+                localStorage.setItem('dailyVisitorCount', visitorCount.toString());
+                sessionStorage.setItem('visitSessionChecked', 'true');
+            }
+        }
+        
+        // Tampilkan angka dengan animasi
+        const visitorElement = document.getElementById('visitor-count');
+        if (visitorElement) {
+            animateValue(visitorElement, 0, visitorCount, 1000);
+        }
+    }
+    
+    // Fungsi animasi angka
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString('id-ID');
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+    
+    // Panggil fungsi counter saat halaman dimuat
+    initVisitorCounter();
+    
     // Initialize Leaflet Map
     var map = L.map('map', {
         zoomControl: false // Disable default zoom control to use custom buttons
