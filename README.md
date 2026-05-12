@@ -1,6 +1,6 @@
-# WebGIS Kampung Keren
+# PEMERINTAH KOTA PALANGKA RAYA : DISPERKIMTAN KOTA PALANGKA RAYA
 
-## DOKUMEN PERSYARATAN PRODUK WEBGIS KAMPUNG KEREN
+## WebGIS Kampung Keren
 
 ### DESKRIPSI PRODUK
 WebGIS ini merupakan platform pemetaan interaktif untuk Lomba Penataan Wilayah Kampung Keren. Pemerintah Kota Palangka Raya menyelenggarakan kegiatan ini. Anda bisa mengakses situs ini secara bebas. Platform ini menampilkan batas wilayah peserta lomba dan informasi pendukung secara transparan.
