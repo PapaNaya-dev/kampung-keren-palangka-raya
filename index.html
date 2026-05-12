@@ -1,13 +1,10 @@
-<!-- Peta Utama - WebGIS Kampung Keren -->
 <!DOCTYPE html>
-
 <html lang="id"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>WebGIS Kampung Keren - Peta Utama</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Public+Sans:wght@500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -231,15 +228,24 @@
         <!-- Detail Info -->
         <div class="p-8 flex-1 overflow-y-auto">
             <div class="flex flex-col md:flex-row md:items-start justify-between mb-6 gap-4">
-                <div>
+                <div class="flex-1">
                     <div id="gallery-badges" class="flex flex-wrap gap-2 mb-3">
                         <!-- Badges will be inserted here -->
                     </div>
                     <h2 id="gallery-title" class="font-h1 text-[24px] md:text-[28px] text-primary leading-tight">Nama Kawasan</h2>
                 </div>
-                <div class="flex gap-2 shrink-0">
-                    <button class="bg-primary text-white font-label-caps px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">Lihat Laporan</button>
+                <div class="flex flex-col items-end gap-3 shrink-0">
+                    <!-- Logo Peserta (2 kolom dengan nama kawasan) -->
+                    <img id="gallery-logo" src="" alt="Logo Peserta" class="w-20 h-20 object-contain rounded-lg border border-outline-variant/20 bg-surface-container-low p-1" onerror="this.style.display='none';">
+                    <button class="bg-primary text-white font-label-caps px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap">Lihat Laporan</button>
                 </div>
+            </div>
+            
+            <!-- Informasi Universitas Peserta -->
+            <div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/20 mb-6">
+                <p id="gallery-universitas-info" class="text-on-surface text-[14px] leading-relaxed">
+                    <!-- Akan diisi dengan JavaScript -->
+                </p>
             </div>
 
             <!-- Call to Action / Tantangan -->
@@ -480,7 +486,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fasilitas Umum Setup
     fetch('data/fasum.geojson?v=' + new Date().getTime())
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error('Gagal memuat data fasum');
+            return res.json();
+        })
         .then(data => {
             const getFasumIcon = (kat, nama) => {
                 let iconName = 'location_city';
@@ -507,19 +516,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             };
 
+            // Sanitasi input untuk mencegah XSS
+            const sanitizeHtml = (text) => {
+                if (!text) return '';
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+
             L.geoJSON(data, {
                 pointToLayer: function (feature, latlng) {
                     return L.marker(latlng, {icon: getFasumIcon(feature.properties.Kategori, feature.properties.Nama)});
                 },
                 onEachFeature: function (feature, layer) {
-                    layer.bindPopup(`<div class="font-body-base text-sm"><b>${feature.properties.Nama}</b><br>${feature.properties.Kategori}</div>`);
+                    const nama = sanitizeHtml(feature.properties.Nama);
+                    const kategori = sanitizeHtml(feature.properties.Kategori);
+                    layer.bindPopup(`<div class="font-body-base text-sm"><b>${nama}</b><br>${kategori}</div>`);
                 }
             }).addTo(fasumLayer);
-        });
+        })
+        .catch(err => console.error("Error loading fasum GeoJSON: ", err));
 
     // Sebaran Persampahan Setup
     fetch('data/persampahan.geojson?v=' + new Date().getTime())
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error('Gagal memuat data persampahan');
+            return res.json();
+        })
         .then(data => {
             const getSampahIcon = (jenis) => {
                 let iconName = 'delete';
@@ -537,19 +560,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             };
 
+            // Sanitasi input untuk mencegah XSS
+            const sanitizeHtml = (text) => {
+                if (!text) return '';
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+
             L.geoJSON(data, {
                 pointToLayer: function (feature, latlng) {
                     return L.marker(latlng, {icon: getSampahIcon(feature.properties.Orde_III)});
                 },
                 onEachFeature: function (feature, layer) {
-                    layer.bindPopup(`<div class="font-body-base text-sm"><b>${feature.properties.Orde_III || 'Persampahan'}</b><br>${feature.properties.Keterangan || ''}</div>`);
+                    const orde = sanitizeHtml(feature.properties.Orde_III || 'Persampahan');
+                    const ket = sanitizeHtml(feature.properties.Keterangan || '');
+                    layer.bindPopup(`<div class="font-body-base text-sm"><b>${orde}</b><br>${ket}</div>`);
                 }
             }).addTo(persampahanLayer);
-        });
+        })
+        .catch(err => console.error("Error loading persampahan GeoJSON: ", err));
 
     // Delineasi Kerawanan Banjir Setup
     fetch('data/banjir.geojson?v=' + new Date().getTime())
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error('Gagal memuat data banjir');
+            return res.json();
+        })
         .then(data => {
             L.geoJSON(data, {
                 style: function(feature) {
@@ -570,15 +607,81 @@ document.addEventListener('DOMContentLoaded', function() {
                     };
                 },
                 onEachFeature: function(feature, layer) {
-                    layer.bindPopup(`<div class="font-body-base text-sm"><b>Kerawanan Banjir</b><br>Potensi: ${feature.properties.POTENSI}</div>`);
+                    const potensi = String(feature.properties.POTENSI || '').replace(/[<>]/g, '');
+                    layer.bindPopup(`<div class="font-body-base text-sm"><b>Kerawanan Banjir</b><br>Potensi: ${potensi}</div>`);
                 }
             }).addTo(banjirLayer);
-        });
+        })
+        .catch(err => console.error("Error loading banjir GeoJSON: ", err));
 
     // Load GeoJSON data
     let geojsonLayer;
+    
+    // Mapping Kawasan ke Nama Universitas Peserta (sesuaikan dengan data sebenarnya)
+    const universitasMapping = {
+        "Kawasan I": "Universitas Palangka Raya",
+        "Kawasan II": "Institut Teknologi Nasional",
+        "Kawasan III": "Universitas Muhammadiyah Palangka Raya",
+        "Kawasan IV": "Politeknik Negeri Palangka Raya",
+        "Kawasan V": "Universitas Kristen Palangka Raya",
+        "Kawasan VI": "STMIK Palangka Raya",
+        "Kawasan VII": "Universitas Islam Negeri Antasari",
+        "Kawasan VIII": "Poltekkes Kemenkes Palangka Raya",
+        "Kawasan IX": "Akademi Kebidanan Daya Taruna",
+        "Kawasan X": "Sekolah Tinggi Ilmu Ekonomi Maju",
+        "Kawasan XI": "Institut Agama Hindu Negeri Tampung Penyang",
+        "Kawasan XII": "Universitas Katolik Tampung Penyang"
+    };
+    
+    // Fungsi untuk mendapatkan nama file logo dengan mendukung berbagai ekstensi
+    function getLogoFileName(kawasan, universitas) {
+        // Format: LOGO_Nama Universitas Peserta_Nama Kawasan.{ext}
+        // Bersihkan nama dari karakter khusus untuk nama file
+        const cleanKawasan = kawasan.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
+        const cleanUniversitas = universitas.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
+        const baseName = `LOGO_${cleanUniversitas}_${cleanKawasan}`;
+        
+        // Coba berbagai ekstensi file
+        const extensions = ['.png', '.jpg', '.jpeg', '.PNG', '.JPG', '.JPEG'];
+        for (const ext of extensions) {
+            // Kita asumsikan file ada, nanti onerror di img tag yang akan menangani jika tidak ada
+            return baseName + ext;
+        }
+        return baseName + '.png'; // Fallback default
+    }
+    
+    // Fungsi preloader untuk mengecek keberadaan file logo (opsional, untuk optimasi)
+    function checkLogoExists(kawasan, universitas, callback) {
+        const baseName = `LOGO_${universitas.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_')}_${kawasan.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_')}`;
+        const extensions = ['.png', '.jpg', '.jpeg'];
+        
+        let checked = 0;
+        for (const ext of extensions) {
+            const img = new Image();
+            img.onload = () => callback(`LOGO_PESERTA/${baseName}${ext}`);
+            img.onerror = () => {
+                checked++;
+                if (checked === extensions.length) {
+                    callback('LOGO_PESERTA/placeholder_logo.png');
+                }
+            };
+            img.src = `LOGO_PESERTA/${baseName}${ext}`;
+        }
+    }
+    
+    // Fungsi sanitasi HTML untuk mencegah XSS
+    const sanitizeHtml = (text) => {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    };
+    
     fetch('data/kawasan.geojson?v=' + new Date().getTime())
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Gagal memuat data kawasan');
+            return response.json();
+        })
         .then(data => {
             geojsonLayer = L.geoJSON(data, {
                 style: function(feature) {
@@ -623,6 +726,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         },
                         click: function(e) {
                             const p = feature.properties;
+                            
+                            // Dapatkan nama universitas dari mapping
+                            const kawasanName = p.Kawasan || '';
+                            const universitas = universitasMapping[kawasanName] || 'Universitas Peserta';
                             
                             // Headers
                             const kel = p.Kelurahan || '';
@@ -697,6 +804,41 @@ document.addEventListener('DOMContentLoaded', function() {
                                 badgesContainer.innerHTML = `<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-label-caps shadow-sm">Info Terbatas</span>`;
                             }
                             
+                            // Set logo and university info dengan pengecekan ekstensi file
+                            const logoFileName = getLogoFileName(kawasanName, universitas);
+                            const logoPath = `LOGO_PESERTA/${logoFileName}`;
+                            const logoImg = document.getElementById('gallery-logo');
+                            
+                            // Reset display dan src
+                            logoImg.style.display = 'block';
+                            logoImg.alt = `Logo ${universitas}`;
+                            
+                            // Fungsi untuk mencoba berbagai ekstensi
+                            const tryExtensions = (baseName, extensions, index) => {
+                                if (index >= extensions.length) {
+                                    // Semua ekstensi gagal, sembunyikan logo
+                                    logoImg.style.display = 'none';
+                                    return;
+                                }
+                                
+                                const testSrc = `LOGO_PESERTA/${baseName}${extensions[index]}`;
+                                const testImg = new Image();
+                                testImg.onload = () => {
+                                    logoImg.src = testSrc;
+                                };
+                                testImg.onerror = () => {
+                                    tryExtensions(baseName, extensions, index + 1);
+                                };
+                                testImg.src = testSrc;
+                            };
+                            
+                            // Ekstrak base name tanpa ekstensi
+                            const baseName = logoFileName.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '');
+                            const extensions = ['.png', '.jpg', '.jpeg', '.PNG', '.JPG', '.JPEG'];
+                            tryExtensions(baseName, extensions, 0);
+                            
+                            document.getElementById('gallery-universitas-info').innerHTML = `Kawasan ini akan ditangani oleh <strong>${sanitizeHtml(universitas)}</strong>`;
+                            
                             openGallery();
                         }
                     });
@@ -755,7 +897,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const onboardingOverlay = document.getElementById('onboarding-overlay');
     const btnSkip = document.getElementById('btn-skip-onboarding');
     const btnNext = document.getElementById('btn-next-onboarding');
-    const btnNavPanduan = document.getElementById('nav-panduan');
+    // Note: nav-panduan ID does not exist in HTML, using nav-panduan-sidebar instead
+    const btnNavPanduan = document.getElementById('nav-panduan-sidebar');
     const btnMobilePanduan = document.getElementById('mobile-nav-panduan');
 
     function closeOnboarding() {
@@ -923,7 +1066,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 if (geojsonLayer && map.hasLayer(geojsonLayer)) map.removeLayer(geojsonLayer);
             }
-            if (typeof updateLegend === 'function') updateLegend();
+            if (typeof window.updateLegend === 'function') window.updateLegend();
         });
     }
 
@@ -934,7 +1077,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 map.removeLayer(fasumLayer);
             }
-            if (typeof updateLegend === 'function') updateLegend();
+            if (typeof window.updateLegend === 'function') window.updateLegend();
         });
     }
 
@@ -945,7 +1088,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 map.removeLayer(banjirLayer);
             }
-            if (typeof updateLegend === 'function') updateLegend();
+            if (typeof window.updateLegend === 'function') window.updateLegend();
         });
     }
 
@@ -956,7 +1099,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 map.removeLayer(persampahanLayer);
             }
-            if (typeof updateLegend === 'function') updateLegend();
+            if (typeof window.updateLegend === 'function') window.updateLegend();
         });
     }
 
