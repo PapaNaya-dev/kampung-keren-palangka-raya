@@ -236,7 +236,7 @@
                 </div>
                 <div class="flex flex-col items-end gap-3 shrink-0">
                     <!-- Logo Peserta (2 kolom dengan nama kawasan) -->
-                    <img id="gallery-logo" src="" alt="Logo Peserta" class="w-20 h-20 object-contain rounded-lg border border-outline-variant/20 bg-surface-container-low p-1" onerror="this.style.display='none';">
+                    <img id="gallery-logo" src="" alt="Logo Peserta" class="w-16 h-16 md:w-20 md:h-20 object-contain rounded-lg border border-outline-variant/20 bg-surface-container-low p-1" style="display:none;" onerror="this.style.display='none';">
                     <button class="bg-primary text-white font-label-caps px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap">Lihat Laporan</button>
                 </div>
             </div>
@@ -617,56 +617,61 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load GeoJSON data
     let geojsonLayer;
     
-    // Mapping Kawasan ke Nama Universitas Peserta (sesuaikan dengan data sebenarnya)
+    // Mapping Kawasan ke Nama Universitas Peserta (sesuai nama file logo di LOGO_PESERTA)
     const universitasMapping = {
-        "Kawasan I": "Universitas Palangka Raya",
-        "Kawasan II": "Institut Teknologi Nasional",
-        "Kawasan III": "Universitas Muhammadiyah Palangka Raya",
-        "Kawasan IV": "Politeknik Negeri Palangka Raya",
-        "Kawasan V": "Universitas Kristen Palangka Raya",
-        "Kawasan VI": "STMIK Palangka Raya",
-        "Kawasan VII": "Universitas Islam Negeri Antasari",
-        "Kawasan VIII": "Poltekkes Kemenkes Palangka Raya",
-        "Kawasan IX": "Akademi Kebidanan Daya Taruna",
-        "Kawasan X": "Sekolah Tinggi Ilmu Ekonomi Maju",
-        "Kawasan XI": "Institut Agama Hindu Negeri Tampung Penyang",
-        "Kawasan XII": "Universitas Katolik Tampung Penyang"
+        "Kawasan I": "Akademi Kebidanan Betang Asi Raya",
+        "Kawasan II": "Institut Agama Hindu Negeri Tampung Penyang",
+        "Kawasan III": "Universitas Palangkaraya (Fakultas MIPA)",
+        "Kawasan IV": "Universitas Terbuka Palangkaraya",
+        "Kawasan V": "Universitas Palangkaraya (FISIP)",
+        "Kawasan VI": "Universitas Palangkaraya (Fakultas Teknik)",
+        "Kawasan VII": "STMIK Palangkaraya",
+        "Kawasan VIII": "Universitas Muhammadiyah Palangkaraya",
+        "Kawasan IX": "Poltekkes Kemenkes Palangkaraya",
+        "Kawasan X": "STIE YBPK Palangkaraya",
+        "Kawasan XI": "Universitas Islam Negeri Palangkaraya",
+        "Kawasan XII": "Universitas PGRI Palangkaraya"
     };
     
-    // Fungsi untuk mendapatkan nama file logo dengan mendukung berbagai ekstensi
-    function getLogoFileName(kawasan, universitas) {
-        // Format: LOGO_Nama Universitas Peserta_Nama Kawasan.{ext}
-        // Bersihkan nama dari karakter khusus untuk nama file
-        const cleanKawasan = kawasan.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
-        const cleanUniversitas = universitas.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
-        const baseName = `LOGO_${cleanUniversitas}_${cleanKawasan}`;
-        
-        // Coba berbagai ekstensi file
-        const extensions = ['.png', '.jpg', '.jpeg', '.PNG', '.JPG', '.JPEG'];
-        for (const ext of extensions) {
-            // Kita asumsikan file ada, nanti onerror di img tag yang akan menangani jika tidak ada
-            return baseName + ext;
-        }
-        return baseName + '.png'; // Fallback default
+    // Fungsi untuk mendapatkan base name logo dengan format sesuai file asli
+    function getLogoBaseName(kawasan, universitas) {
+        // Format file asli: LOGO_ Nama Universitas Peserta_Nama Kawasan
+        // Contoh: LOGO_ Akademi Kebidanan Betang Asi Raya_Kawasan I.jpg
+        // Perhatikan ada SPASI setelah "LOGO_" dan underscore sebelum Kawasan
+        return `LOGO_ ${universitas}_${kawasan}`;
     }
     
-    // Fungsi preloader untuk mengecek keberadaan file logo (opsional, untuk optimasi)
-    function checkLogoExists(kawasan, universitas, callback) {
-        const baseName = `LOGO_${universitas.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_')}_${kawasan.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_')}`;
-        const extensions = ['.png', '.jpg', '.jpeg'];
+    // Fungsi untuk mengecek dan mendapatkan URL logo yang valid
+    function getLogoUrl(kawasan, universitas, callback) {
+        const baseName = getLogoBaseName(kawasan, universitas);
+        // Ekstensi file yang didukung: png, jpg, jpeg (case-insensitive)
+        const extensions = ['.png', '.jpg', '.jpeg', '.PNG', '.JPG', '.JPEG'];
         
         let checked = 0;
-        for (const ext of extensions) {
-            const img = new Image();
-            img.onload = () => callback(`LOGO_PESERTA/${baseName}${ext}`);
-            img.onerror = () => {
-                checked++;
-                if (checked === extensions.length) {
-                    callback('LOGO_PESERTA/placeholder_logo.png');
-                }
+        const checkNext = () => {
+            if (checked >= extensions.length) {
+                // Semua ekstensi gagal, kembalikan null untuk menyembunyikan logo
+                callback(null);
+                return;
+            }
+            
+            const ext = extensions[checked];
+            const testSrc = `LOGO_PESERTA/${baseName}${ext}`;
+            const testImg = new Image();
+            
+            testImg.onload = () => {
+                callback(testSrc);
             };
-            img.src = `LOGO_PESERTA/${baseName}${ext}`;
-        }
+            
+            testImg.onerror = () => {
+                checked++;
+                checkNext();
+            };
+            
+            testImg.src = testSrc;
+        };
+        
+        checkNext();
     }
     
     // Fungsi sanitasi HTML untuk mencegah XSS
@@ -731,7 +736,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             const kawasanName = p.Kawasan || '';
                             const universitas = universitasMapping[kawasanName] || 'Universitas Peserta';
                             
-                            // Headers
+                            // Headers - Layout 2 kolom: Nama Kawasan dan Logo
                             const kel = p.Kelurahan || '';
                             const title = p.Kawasan + (kel ? ` - ${kel}` : '');
                             document.getElementById('gallery-title').innerText = title;
@@ -805,37 +810,19 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                             
                             // Set logo and university info dengan pengecekan ekstensi file
-                            const logoFileName = getLogoFileName(kawasanName, universitas);
-                            const logoPath = `LOGO_PESERTA/${logoFileName}`;
                             const logoImg = document.getElementById('gallery-logo');
                             
-                            // Reset display dan src
-                            logoImg.style.display = 'block';
-                            logoImg.alt = `Logo ${universitas}`;
-                            
-                            // Fungsi untuk mencoba berbagai ekstensi
-                            const tryExtensions = (baseName, extensions, index) => {
-                                if (index >= extensions.length) {
-                                    // Semua ekstensi gagal, sembunyikan logo
+                            // Gunakan fungsi getLogoUrl untuk mengecek dan mendapatkan URL logo yang valid
+                            getLogoUrl(kawasanName, universitas, (logoSrc) => {
+                                if (logoSrc) {
+                                    logoImg.style.display = 'block';
+                                    logoImg.src = logoSrc;
+                                    logoImg.alt = `Logo ${universitas}`;
+                                } else {
+                                    // Logo tidak ditemukan, sembunyikan
                                     logoImg.style.display = 'none';
-                                    return;
                                 }
-                                
-                                const testSrc = `LOGO_PESERTA/${baseName}${extensions[index]}`;
-                                const testImg = new Image();
-                                testImg.onload = () => {
-                                    logoImg.src = testSrc;
-                                };
-                                testImg.onerror = () => {
-                                    tryExtensions(baseName, extensions, index + 1);
-                                };
-                                testImg.src = testSrc;
-                            };
-                            
-                            // Ekstrak base name tanpa ekstensi
-                            const baseName = logoFileName.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '');
-                            const extensions = ['.png', '.jpg', '.jpeg', '.PNG', '.JPG', '.JPEG'];
-                            tryExtensions(baseName, extensions, 0);
+                            });
                             
                             document.getElementById('gallery-universitas-info').innerHTML = `Kawasan ini akan ditangani oleh <strong>${sanitizeHtml(universitas)}</strong>`;
                             
